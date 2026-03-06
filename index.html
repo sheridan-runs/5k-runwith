@@ -11,7 +11,7 @@
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://5k.runwith.club">
 
-<!-- ═══ OPEN GRAPH (Facebook, LinkedIn, iMessage, Slack, Discord) ═══ -->
+<!-- ═══ OPEN GRAPH ═══ -->
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://5k.runwith.club">
 <meta property="og:title" content="18:38 — Parkrun Personal Best">
@@ -28,42 +28,30 @@
 <meta property="article:tag" content="parkrun">
 <meta property="article:tag" content="personal best">
 
-<!-- ═══ TWITTER / X CARD ═══ -->
+<!-- ═══ TWITTER / X ═══ -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://5k.runwith.club">
 <meta name="twitter:title" content="18:38 — Parkrun Personal Best">
 <meta name="twitter:description" content="No watch checks. No doubt. Scroll through 18 minutes and 38 seconds — real GPS, 1119 heart rate data points, and the story that carried the final kilometre.">
 <meta name="twitter:image" content="https://5k.runwith.club/og-image.png">
-<meta name="twitter:image:alt" content="18:38 — Sheridan Jamieson Parkrun PB">
 <meta name="twitter:creator" content="@sheridanjamieson">
 <meta name="twitter:site" content="@runwithclub">
 
-<!-- ═══ STRAVA / RUNNING APP PREVIEWS ═══ -->
+<!-- ═══ APPLE / PWA ═══ -->
 <meta name="theme-color" content="#e8341a">
-<meta name="msapplication-TileColor" content="#070707">
-
-<!-- ═══ APPLE / iOS ═══ -->
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="18:38 PB">
 
-<!-- ═══ STRUCTURED DATA (Google rich results) ═══ -->
+<!-- ═══ STRUCTURED DATA ═══ -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "18:38 — Parkrun Personal Best",
   "description": "An immersive data experience of Sheridan Jamieson's Palmerston North parkrun personal best — 1119 heart rate data points, real GPS route, and the story behind the final kilometre.",
-  "author": {
-    "@type": "Person",
-    "name": "Sheridan Jamieson",
-    "url": "https://sheridanjamieson.com"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "runwith.club",
-    "url": "https://runwith.club"
-  },
+  "author": { "@type": "Person", "name": "Sheridan Jamieson", "url": "https://sheridanjamieson.com" },
+  "publisher": { "@type": "Organization", "name": "runwith.club", "url": "https://runwith.club" },
   "url": "https://5k.runwith.club",
   "datePublished": "2026-02-27",
   "image": "https://5k.runwith.club/og-image.png",
@@ -77,6 +65,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,400;1,400;1,600&display=swap" rel="stylesheet">
+
 <style>
   :root {
     --black: #070707;
@@ -88,24 +77,24 @@
     --grey: #2a2a2a;
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
 
   body {
-    background: var(--black);
-    color: var(--white);
-    font-family: 'Barlow Condensed', sans-serif;
-    overflow-x: hidden;
-    cursor: none;
+    background:var(--black);
+    color:var(--white);
+    font-family:'Barlow Condensed',sans-serif;
+    overflow-x:hidden;
+    cursor:none;
   }
-  @media(hover:none),(pointer:coarse){ body{cursor:auto;} }
+  @media(hover:none),(pointer:coarse){ body{ cursor:auto; } }
 
-  /* Custom cursor — desktop only */
+  /* ─── CUSTOM CURSOR (desktop only) ─── */
   #cur { position:fixed;width:7px;height:7px;background:var(--red);border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:screen; }
   #curR { position:fixed;width:28px;height:28px;border:1px solid rgba(232,52,26,0.35);border-radius:50%;pointer-events:none;z-index:9998;transition:transform 0.12s ease; }
-  @media(hover:none),(pointer:coarse){ #cur,#curR{display:none;} body{cursor:auto;} }
+  @media(hover:none),(pointer:coarse){ #cur,#curR{ display:none; } }
 
-  /* Grain */
+  /* ─── GRAIN ─── */
   body::before {
     content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%;
     background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -113,26 +102,48 @@
   }
   @keyframes grain { 0%{transform:translate(0,0)} 25%{transform:translate(-2%,-3%)} 50%{transform:translate(3%,2%)} 75%{transform:translate(-1%,3%)} 100%{transform:translate(2%,-1%)} }
 
-  /* Progress bar */
+  /* ─── PROGRESS BAR ─── */
   #prog { position:fixed;top:0;left:0;height:2px;background:var(--red);z-index:1000;transition:width 0.08s linear;box-shadow:0 0 8px var(--red); }
 
-  /* Audio toggle */
+  /* ─── HEARTBEAT BUTTON ─── */
   #audioBtn {
     position:fixed;bottom:2rem;right:2rem;z-index:800;
-    background:rgba(232,52,26,0.15);border:1px solid rgba(232,52,26,0.3);
-    color:var(--red);font-family:'Barlow Condensed',sans-serif;
-    font-size:10px;letter-spacing:0.3em;text-transform:uppercase;
-    padding:0.6rem 1.2rem;cursor:pointer;transition:all 0.2s ease;
-    backdrop-filter:blur(4px);-webkit-tap-highlight-color:transparent;
+    background:rgba(232,52,26,0.1);
+    border:1px solid rgba(232,52,26,0.4);
+    color:var(--red);
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:11px;letter-spacing:0.4em;text-transform:uppercase;
+    padding:0.8rem 1.6rem;
+    cursor:pointer;
+    backdrop-filter:blur(6px);
+    -webkit-tap-highlight-color:transparent;
     touch-action:manipulation;
+    animation:btnPulse 2.2s ease-in-out infinite;
+    transition:background 0.2s ease;
   }
   #audioBtn:hover { background:rgba(232,52,26,0.25); }
+  #audioBtn.is-on {
+    animation:none;
+    background:rgba(232,52,26,0.15);
+    border-color:rgba(232,52,26,0.55);
+    box-shadow:0 0 16px rgba(232,52,26,0.25);
+  }
 
-  /* BPM counter */
+  @keyframes btnPulse {
+    0%,100% {
+      box-shadow:0 0 0 0 rgba(232,52,26,0.6), 0 0 10px rgba(232,52,26,0.1);
+      border-color:rgba(232,52,26,0.4);
+    }
+    50% {
+      box-shadow:0 0 0 8px rgba(232,52,26,0), 0 0 22px rgba(232,52,26,0.4);
+      border-color:rgba(232,52,26,1);
+    }
+  }
+
+  /* ─── BPM DISPLAY ─── */
   #bpmDisplay {
     position:fixed;bottom:2rem;left:2rem;z-index:800;
-    opacity:0;transition:opacity 0.5s ease;
-    text-align:left;
+    opacity:0;transition:opacity 0.5s ease;text-align:left;pointer-events:none;
   }
   #bpmDisplay.show { opacity:1; }
   #bpmVal { font-size:2.8rem;font-weight:900;letter-spacing:-0.03em;line-height:1;color:var(--red); }
@@ -154,40 +165,26 @@
   .hero-title { font-size:clamp(5rem,15vw,14rem);font-weight:900;line-height:0.85;letter-spacing:-0.03em;text-transform:uppercase;opacity:0;animation:fadeUp 0.9s ease 0.5s forwards; }
   .hero-title .pb { color:var(--red);font-style:italic;display:block; }
   .hero-sub { font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(0.95rem,1.6vw,1.25rem);color:rgba(240,236,228,0.75);margin-top:2rem;max-width:460px;line-height:1.65;opacity:0;animation:fadeUp 0.9s ease 0.8s forwards; }
-
-  .hero-data {
-    position:absolute;right:8vw;top:50%;transform:translateY(-50%);
-    text-align:right;opacity:0;animation:fadeUp 0.9s ease 1s forwards;
-  }
+  .hero-data { position:absolute;right:8vw;top:50%;transform:translateY(-50%);text-align:right;opacity:0;animation:fadeUp 0.9s ease 1s forwards; }
   .hero-time { font-size:clamp(4rem,9vw,8rem);font-weight:900;letter-spacing:-0.04em;line-height:1;color:rgba(232,52,26,0.12); }
   .hero-time-label { font-size:9px;letter-spacing:0.35em;text-transform:uppercase;color:var(--muted); }
-
   .scroll-hint { position:absolute;bottom:2.5rem;left:8vw;display:flex;align-items:center;gap:1rem;font-size:9px;letter-spacing:0.35em;text-transform:uppercase;color:var(--muted);opacity:0;animation:fadeUp 0.9s ease 1.3s forwards; }
   .scroll-line { width:50px;height:1px;background:var(--grey);position:relative;overflow:hidden; }
   .scroll-line::after { content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:var(--red);animation:scan 2s ease-in-out infinite; }
   @keyframes scan { 0%{left:-100%} 100%{left:100%} }
-
   @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
 
   /* ─── SECTIONS ─── */
-  .section {
-    padding:8vh 8vw;position:relative;overflow:hidden;
-    border-top:1px solid rgba(255,255,255,0.03);
-  }
-
+  .section { padding:8vh 8vw;position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,0.03); }
   .two-col { display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center; }
   .two-col.flip .col-text { order:2; }
   .two-col.flip .col-vis { order:1; }
-
   .km-badge { font-size:10px;letter-spacing:0.4em;text-transform:uppercase;color:var(--red);margin-bottom:1.2rem;display:flex;align-items:center;gap:0.8rem; }
   .km-badge::after { content:'';flex:1;height:1px;background:rgba(232,52,26,0.25);max-width:50px; }
-
   .km-title { font-size:clamp(2.8rem,5.5vw,5rem);font-weight:900;text-transform:uppercase;line-height:0.88;letter-spacing:-0.02em;margin-bottom:1.5rem; }
-
   .km-prose { font-family:'Playfair Display',serif;font-size:clamp(1rem,1.35vw,1.12rem);line-height:1.8;color:rgba(240,236,228,0.92);font-style:italic; }
   .km-prose em { color:var(--white);font-style:normal;font-weight:600; }
   .km-prose strong { color:var(--amber);font-style:normal; }
-
   .split-row { display:flex;gap:2.5rem;margin-top:2.5rem; }
   .split { display:flex;flex-direction:column;gap:0.25rem; }
   .split-val { font-size:clamp(2rem,3.2vw,3.2rem);font-weight:700;letter-spacing:-0.03em;line-height:1; }
@@ -212,19 +209,14 @@
   .map-wrap { position:relative;width:100%;height:420px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);overflow:hidden; }
   #routeCanvas { width:100%;height:100%; }
   .map-label { position:absolute;top:1rem;left:1rem;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.2); }
-  .map-dot { position:absolute;width:8px;height:8px;border-radius:50%;background:var(--red);transform:translate(-50%,-50%);box-shadow:0 0 10px var(--red);transition:all 0.1s linear; }
 
-  /* ─── LYDIA SECTION ─── */
+  /* ─── LYDIA ─── */
   .lydia-section { background:#0e0a06; }
   .lydia-bg { position:absolute;inset:0;background:radial-gradient(ellipse 100% 80% at 50% 50%, rgba(247,183,49,0.07) 0%, transparent 65%); }
-
   .lydia-kicker { font-size:10px;letter-spacing:0.4em;text-transform:uppercase;color:var(--amber);margin-bottom:2rem;position:relative; }
   .lydia-title { font-size:clamp(2.5rem,6vw,6.5rem);font-weight:900;text-transform:uppercase;line-height:0.88;letter-spacing:-0.02em;max-width:900px;margin-bottom:3rem;position:relative; }
   .lydia-title .ghost-line { color:rgba(247,183,49,0.55);display:block; }
   .lydia-title .you-line { color:var(--white);display:block; }
-
-
-
   .lydia-prose { font-family:'Playfair Display',serif;font-size:clamp(1.05rem,1.5vw,1.2rem);line-height:1.85;color:rgba(240,236,228,0.92);max-width:620px;font-style:italic;position:relative; }
   .lydia-prose strong { color:var(--amber);font-style:normal;font-weight:600; }
   .lydia-prose em { color:var(--white);font-style:normal;font-weight:600; }
@@ -233,6 +225,7 @@
   .km5-section { background:#0e0905; }
   .km5-bg { position:absolute;inset:0;background:radial-gradient(ellipse 120% 90% at 50% 60%, rgba(247,183,49,0.09) 0%, transparent 65%);animation:burnLoop 3s ease-in-out infinite; }
   @keyframes burnLoop { 0%,100%{opacity:1} 50%{opacity:0.55} }
+  @keyframes ringBurn { 0%,100%{stroke-dashoffset:18;opacity:0.85} 50%{stroke-dashoffset:0;opacity:1} }
 
   /* ─── FINISH ─── */
   .finish-section {
@@ -242,10 +235,9 @@
   }
   .finish-bg { position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 50% 50%, rgba(232,52,26,0.15) 0%, transparent 65%);animation:finishBreathe 3s ease-in-out infinite; }
   @keyframes finishBreathe { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.12);opacity:0.75} }
-
   .finish-label { font-size:10px;letter-spacing:0.5em;text-transform:uppercase;color:var(--red);margin-bottom:1rem;position:relative; }
-  .finish-time { font-size:clamp(5rem,18vw,17rem);font-weight:900;line-height:0.82;letter-spacing:-0.04em;color:var(--red);position:relative;text-shadow:0 0 60px rgba(232,52,26,0.6);animation:tpulse 2.5s ease-in-out infinite; }
-  @keyframes tpulse { 0%,100%{text-shadow:0 0 60px rgba(232,52,26,0.6);opacity:1} 50%{text-shadow:0 0 120px rgba(232,52,26,0.9);opacity:1} }
+  .finish-time { font-size:clamp(5rem,18vw,17rem);font-weight:900;line-height:0.82;letter-spacing:-0.04em;color:var(--red);position:relative;animation:tpulse 2.5s ease-in-out infinite; }
+  @keyframes tpulse { 0%,100%{text-shadow:0 0 60px rgba(232,52,26,0.6)} 50%{text-shadow:0 0 120px rgba(232,52,26,0.9)} }
   .finish-quote { font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.1rem,2.2vw,1.9rem);color:rgba(240,236,228,0.8);margin-top:2rem;position:relative;max-width:640px; }
   .finish-divider { width:1px;height:70px;background:linear-gradient(to bottom,transparent,var(--red),transparent);margin:2.5rem auto;position:relative; }
   .finish-grid { display:flex;gap:5rem;flex-wrap:wrap;justify-content:center;position:relative; }
@@ -253,7 +245,7 @@
   .fstat-val { font-size:clamp(2.5rem,4.5vw,4.2rem);font-weight:700;letter-spacing:-0.03em;line-height:1; }
   .fstat-lbl { font-size:8px;letter-spacing:0.4em;text-transform:uppercase;color:var(--muted);margin-top:0.4rem; }
 
-  /* ─── HR WAVE at bottom ─── */
+  /* ─── HR WAVE ─── */
   .hr-wave-section { padding:6vh 0;background:#0a0808;overflow:hidden;border-top:1px solid rgba(255,255,255,0.03); }
   .hr-wave-label { font-size:9px;letter-spacing:0.4em;text-transform:uppercase;color:var(--muted);padding:0 8vw;margin-bottom:1.5rem; }
   #hrWaveSvg { width:100%;height:120px;display:block; }
@@ -263,71 +255,8 @@
   .r.in { opacity:1;transform:translateY(0); }
   .d1{transition-delay:0.1s} .d2{transition-delay:0.22s} .d3{transition-delay:0.35s} .d4{transition-delay:0.5s}
 
-  /* ─── RESPONSIVE ─── */
-  @media(max-width:768px){
-    /* Layout */
-    .two-col { grid-template-columns:1fr; gap:2.5rem; }
-    .two-col.flip .col-text, .two-col.flip .col-vis { order:unset; }
-    .section { padding:7vh 6vw; }
-
-    /* Hero */
-    .hero { padding:0 6vw; }
-    .hero-data { display:none; }
-    .hero-title { font-size:clamp(4rem,18vw,7rem); }
-    .hero-sub { font-size:1rem; margin-top:1.2rem; }
-    .scroll-hint { bottom:1.5rem; }
-
-    /* KM badges & titles */
-    .km-badge { font-size:9px; margin-bottom:0.8rem; }
-    .km-title { font-size:clamp(2.4rem,10vw,3.8rem); margin-bottom:1rem; }
-    .km-prose { font-size:1rem; line-height:1.7; }
-
-    /* Splits */
-    .split-row { gap:1.5rem; margin-top:1.8rem; flex-wrap:wrap; }
-    .split-val { font-size:clamp(1.6rem,7vw,2.4rem); }
-
-    /* Rings — smaller, still centred */
-    .ring-wrap { min-height:240px; }
-    .ering { width:190px; height:190px; }
-    .ering-pct { font-size:2.8rem; }
-
-    /* ECG */
-    .ecg-wrap { height:200px; }
-
-    /* GPS map */
-    .map-wrap { height:260px; }
-
-    /* Lydia */
-    .lydia-title { font-size:clamp(1.9rem,7.5vw,3rem); margin-bottom:2rem; line-height:0.92; }
-    .lydia-kicker { margin-bottom:1.2rem; }
-    .lydia-prose { font-size:1rem; line-height:1.75; }
-
-    /* Finish */
-    .finish-section { padding:6vh 6vw; }
-    .finish-time { font-size:clamp(5rem,22vw,10rem); }
-    .finish-quote { font-size:1.05rem; margin-top:1.2rem; }
-    .finish-grid { gap:2rem; margin-top:0; }
-    .fstat-val { font-size:clamp(2rem,8vw,3rem); }
-
-    /* HR wave */
-    #hrWaveSvg { height:80px; }
-
-    /* BPM counter — move up so footer links don't clash */
-    #bpmDisplay { bottom:5rem; }
-  }
-
-  @media(max-width:480px){
-    .km-title { font-size:clamp(2rem,9vw,3rem); }
-    .lydia-title { font-size:clamp(1.6rem,7vw,2.4rem); }
-    .split-val { font-size:1.5rem; }
-    .ering { width:160px; height:160px; }
-    .ering-pct { font-size:2.2rem; }
-    .ring-wrap { min-height:200px; }
-    .finish-time { font-size:clamp(4.5rem,20vw,9rem); }
-  }
-
-  /* Footer classes */
-  .footer-col { display:flex; flex-direction:column; }
+  /* ─── FOOTER ─── */
+  .footer-col { display:flex;flex-direction:column; }
   .footer-col-center { text-align:center; }
   .footer-col-right { text-align:right; }
   .footer-link { font-size:1.4rem;font-weight:700;letter-spacing:-0.02em;text-decoration:none;text-transform:uppercase;transition:opacity 0.2s ease; }
@@ -335,13 +264,51 @@
   .footer-link-red { color:var(--red); }
   .footer-link-muted { color:rgba(240,236,228,0.5); }
 
+  /* ─── RESPONSIVE 768px ─── */
   @media(max-width:768px){
-    /* Override the earlier footer rule - stack all left-aligned */
-    footer { flex-direction:column; align-items:flex-start; gap:1.5rem; padding:4vh 6vw 7rem; }
-    .footer-col, .footer-col-center, .footer-col-right { text-align:left; }
+    .two-col { grid-template-columns:1fr;gap:2.5rem; }
+    .two-col.flip .col-text,.two-col.flip .col-vis { order:unset; }
+    .section { padding:7vh 6vw; }
+    .hero { padding:0 6vw; }
+    .hero-data { display:none; }
+    .hero-title { font-size:clamp(4rem,18vw,7rem); }
+    .hero-sub { font-size:1rem;margin-top:1.2rem; }
+    .scroll-hint { bottom:1.5rem; }
+    .km-badge { font-size:9px;margin-bottom:0.8rem; }
+    .km-title { font-size:clamp(2.4rem,10vw,3.8rem);margin-bottom:1rem; }
+    .km-prose { font-size:1rem;line-height:1.7; }
+    .split-row { gap:1.5rem;margin-top:1.8rem;flex-wrap:wrap; }
+    .split-val { font-size:clamp(1.6rem,7vw,2.4rem); }
+    .ring-wrap { min-height:240px; }
+    .ering { width:190px;height:190px; }
+    .ering-pct { font-size:2.8rem; }
+    .ecg-wrap { height:200px; }
+    .map-wrap { height:260px; }
+    .lydia-title { font-size:clamp(1.9rem,7.5vw,3rem);margin-bottom:2rem;line-height:0.92; }
+    .lydia-kicker { margin-bottom:1.2rem; }
+    .lydia-prose { font-size:1rem;line-height:1.75; }
+    .finish-section { padding:6vh 6vw; }
+    .finish-time { font-size:clamp(5rem,22vw,10rem); }
+    .finish-quote { font-size:1.05rem;margin-top:1.2rem; }
+    .finish-grid { gap:2rem;margin-top:0; }
+    .fstat-val { font-size:clamp(2rem,8vw,3rem); }
+    #hrWaveSvg { height:80px; }
+    #audioBtn { bottom:1.5rem;right:auto;left:1.2rem;font-size:9px;padding:0.6rem 1rem; }
+    #bpmDisplay { bottom:5rem;left:auto;right:1.2rem;text-align:right; }
+    footer { flex-direction:column !important;align-items:flex-start !important;gap:1.5rem !important;padding:4vh 6vw 7rem !important; }
+    .footer-col,.footer-col-center,.footer-col-right { text-align:left; }
     .footer-link { font-size:1.15rem; }
-    #audioBtn { bottom:1.5rem; right:auto; left:1.2rem; font-size:9px; padding:0.5rem 0.9rem; }
-    #bpmDisplay { bottom:5rem; left:auto; right:1.2rem; }
+  }
+
+  /* ─── RESPONSIVE 480px ─── */
+  @media(max-width:480px){
+    .km-title { font-size:clamp(2rem,9vw,3rem); }
+    .lydia-title { font-size:clamp(1.6rem,7vw,2.4rem); }
+    .split-val { font-size:1.5rem; }
+    .ering { width:160px;height:160px; }
+    .ering-pct { font-size:2.2rem; }
+    .ring-wrap { min-height:200px; }
+    .finish-time { font-size:clamp(4.5rem,20vw,9rem); }
   }
 </style>
 </head>
@@ -350,8 +317,8 @@
 <div id="cur"></div>
 <div id="curR"></div>
 <div id="prog"></div>
-<div id="bpmDisplay"><div id="bpmVal">175</div><div id="bpmLabel">bpm</div></div>
-<button id="audioBtn" onclick="toggleAudio()">♪ heartbeat off</button>
+<div id="bpmDisplay"><div id="bpmVal">139</div><div id="bpmLabel">bpm</div></div>
+<button id="audioBtn" onclick="toggleAudio()">♥ tap for heartbeat</button>
 
 <!-- ════════════ HERO ════════════ -->
 <section class="hero">
@@ -382,8 +349,7 @@
     <div class="col-text">
       <div class="km-badge r">Kilometre 01</div>
       <h2 class="km-title r d1">Locked<br>in.</h2>
-      <p class="km-prose r d2">The gun goes. The crowd funnels. You settle into pace on the first bend and something clicks — <em>the effort feels right, first try.</em> No pacing by GPS, no checking the watch. The body has done this enough to know. You don't look down once.
-      </p>
+      <p class="km-prose r d2">The gun goes. The crowd funnels. You settle into pace on the first bend and something clicks — <em>the effort feels right, first try.</em> No pacing by GPS, no checking the watch. The body has done this enough to know. You don't look down once.</p>
       <div class="split-row r d3">
         <div class="split"><div class="split-val" style="color:var(--white);">3:37</div><div class="split-lbl">split</div></div>
         <div class="split"><div class="split-val" style="color:rgba(232,52,26,0.85);">175</div><div class="split-lbl">bpm</div></div>
@@ -415,8 +381,7 @@
     <div class="col-text">
       <div class="km-badge r">Kilometre 02</div>
       <h2 class="km-title r d1">No watch.<br>Just feel.</h2>
-      <p class="km-prose r d2">Out and back course. The pack thins. You're running with a small group — making moves around people who've gone out too fast. There's something different about racing with a pack. <em>You find another gear in having space to hunt.</em>
-      </p>
+      <p class="km-prose r d2">Out and back course. The pack thins. You're running with a small group — making moves around people who've gone out too fast. There's something different about racing with a pack. <em>You find another gear in having space to hunt.</em></p>
       <div class="split-row r d3">
         <div class="split"><div class="split-val" style="color:var(--orange);">3:47</div><div class="split-lbl">split</div></div>
         <div class="split"><div class="split-val" style="color:var(--red);">180</div><div class="split-lbl">bpm</div></div>
@@ -424,7 +389,6 @@
       </div>
     </div>
     <div class="col-vis r d2">
-      <!-- ECG-style HR chart -->
       <div class="ecg-wrap">
         <svg class="ecg-svg" viewBox="0 0 500 200" preserveAspectRatio="none">
           <defs>
@@ -459,7 +423,6 @@
   <div class="map-wrap r d1">
     <canvas id="routeCanvas"></canvas>
     <div class="map-label">GPS track · 140 points</div>
-    <div class="map-dot" id="mapDot" style="display:none;"></div>
   </div>
 </section>
 
@@ -470,8 +433,7 @@
     <div class="col-text">
       <div class="km-badge r">Kilometre 03</div>
       <h2 class="km-title r d1">The<br>threshold.</h2>
-      <p class="km-prose r d2">The turnaround. Now you're running back towards the finish, meeting the field head on. HR is settling into a burn. <em>Right at the ceiling of what's sustainable.</em> Not comfortable — this was never going to be comfortable. But this is exactly the correct kind of suffering. The body knows the difference.
-      </p>
+      <p class="km-prose r d2">The turnaround. Now you're running back towards the finish, meeting the field head on. HR is settling into a burn. <em>Right at the ceiling of what's sustainable.</em> Not comfortable — this was never going to be comfortable. But this is exactly the correct kind of suffering. The body knows the difference.</p>
       <div class="split-row r d3">
         <div class="split"><div class="split-val" style="color:var(--orange);">3:46</div><div class="split-lbl">split</div></div>
         <div class="split"><div class="split-val" style="color:var(--red);">184</div><div class="split-lbl">bpm</div></div>
@@ -505,13 +467,11 @@
     <span class="ghost-line">She said she had nothing left.</span>
     <span class="you-line">Then she found it anyway.</span>
   </h2>
-
   <p class="lydia-prose r d2">
     A week earlier you'd paced Lydia through her own parkrun. You went out fast — sometimes you have to, to clear the pack at the start. You trusted her to settle. <em>"We're on pace. No need to push right now."</em> Running from the middle of the field, making moves, reading the race for both of you.<br><br>
     At 4km: a little squeeze coming. Just a slight pick-up. She was breathing hard, moving well, locked in. You got to the final bend and said you were letting her go. <strong>"I don't have anything else."</strong> Then you watched her dig — pick it up one last time, carry herself through the final 200 metres on pure will.<br><br>
     A week later, at 4km into your own race, that image surfaced. <em>You used it.</em> <strong>You found exactly what she found.</strong>
   </p>
-
   <div class="split-row r d3" style="margin-top:2.5rem;">
     <div class="split"><div class="split-val" style="color:var(--amber);">3:47</div><div class="split-lbl">km 4 split</div></div>
     <div class="split"><div class="split-val" style="color:var(--red);">185</div><div class="split-lbl">bpm</div></div>
@@ -526,8 +486,7 @@
     <div class="col-text">
       <div class="km-badge r" style="color:var(--amber);">Kilometre 05</div>
       <h2 class="km-title r d1" style="color:var(--amber);">Leave<br>nothing.</h2>
-      <p class="km-prose r d2">HR peaks at <em>195</em>. The split mirrors km 1 exactly — <em>3:37.</em> The body ran a perfect race. What began as your opening pace becomes your closing pace. The effort was right. All of it. <strong>The watch confirmed what you already knew.</strong>
-      </p>
+      <p class="km-prose r d2">HR peaks at <em>195</em>. The split mirrors km 1 exactly — <em>3:37.</em> The body ran a perfect race. What began as your opening pace becomes your closing pace. The effort was right. All of it. <strong>The watch confirmed what you already knew.</strong></p>
       <div class="split-row r d3">
         <div class="split"><div class="split-val" style="color:var(--amber);">3:37</div><div class="split-lbl">split</div></div>
         <div class="split"><div class="split-val" style="color:var(--red);">195</div><div class="split-lbl">bpm peak</div></div>
@@ -551,7 +510,6 @@
       </div>
     </div>
   </div>
-  <style>@keyframes ringBurn { 0%,100%{stroke-dashoffset:18;opacity:0.85} 50%{stroke-dashoffset:0;opacity:1} }</style>
 </section>
 
 <!-- ════════════ FINISH ════════════ -->
@@ -569,288 +527,7 @@
   </div>
 </section>
 
-<script>
-// ═══════════════════════════════════════════
-// DATA — extracted from Sheridan's FIT file
-// ═══════════════════════════════════════════
-const GPS = [{"lat":-40.373047,"lng":175.625234,"hr":139,"dist":0,"sec":0},{"lat":-40.373138,"lng":175.625677,"hr":139,"dist":40,"sec":8},{"lat":-40.373189,"lng":175.62612,"hr":145,"dist":78,"sec":16},{"lat":-40.373193,"lng":175.626589,"hr":154,"dist":117,"sec":24},{"lat":-40.373216,"lng":175.627049,"hr":165,"dist":157,"sec":32},{"lat":-40.373278,"lng":175.627481,"hr":170,"dist":194,"sec":40},{"lat":-40.373326,"lng":175.627934,"hr":171,"dist":233,"sec":48},{"lat":-40.373359,"lng":175.628376,"hr":171,"dist":271,"sec":56},{"lat":-40.37338,"lng":175.628798,"hr":172,"dist":307,"sec":64},{"lat":-40.373269,"lng":175.629193,"hr":173,"dist":342,"sec":72},{"lat":-40.373453,"lng":175.629555,"hr":173,"dist":382,"sec":80},{"lat":-40.373578,"lng":175.629963,"hr":174,"dist":419,"sec":88},{"lat":-40.37367,"lng":175.630353,"hr":175,"dist":454,"sec":96},{"lat":-40.373787,"lng":175.630736,"hr":174,"dist":489,"sec":104},{"lat":-40.373903,"lng":175.631136,"hr":175,"dist":525,"sec":112},{"lat":-40.374043,"lng":175.631533,"hr":175,"dist":563,"sec":120},{"lat":-40.374169,"lng":175.631935,"hr":176,"dist":600,"sec":128},{"lat":-40.374349,"lng":175.632319,"hr":175,"dist":638,"sec":136},{"lat":-40.374505,"lng":175.632677,"hr":176,"dist":673,"sec":144},{"lat":-40.374652,"lng":175.633054,"hr":176,"dist":709,"sec":152},{"lat":-40.374829,"lng":175.633427,"hr":176,"dist":747,"sec":160},{"lat":-40.374998,"lng":175.633755,"hr":176,"dist":780,"sec":168},{"lat":-40.375164,"lng":175.634115,"hr":176,"dist":816,"sec":176},{"lat":-40.375335,"lng":175.634483,"hr":176,"dist":852,"sec":184},{"lat":-40.375494,"lng":175.63484,"hr":176,"dist":888,"sec":192},{"lat":-40.375654,"lng":175.635205,"hr":176,"dist":923,"sec":200},{"lat":-40.37567,"lng":175.635608,"hr":176,"dist":958,"sec":208},{"lat":-40.375617,"lng":175.636035,"hr":175,"dist":995,"sec":216},{"lat":-40.375583,"lng":175.636424,"hr":175,"dist":1028,"sec":224},{"lat":-40.375648,"lng":175.63683,"hr":177,"dist":1062,"sec":232},{"lat":-40.375824,"lng":175.637213,"hr":178,"dist":1101,"sec":240},{"lat":-40.37571,"lng":175.637598,"hr":178,"dist":1137,"sec":248},{"lat":-40.375583,"lng":175.63798,"hr":179,"dist":1172,"sec":256},{"lat":-40.375553,"lng":175.638379,"hr":179,"dist":1206,"sec":264},{"lat":-40.375556,"lng":175.63879,"hr":179,"dist":1241,"sec":272},{"lat":-40.375428,"lng":175.639211,"hr":178,"dist":1280,"sec":280},{"lat":-40.375203,"lng":175.639503,"hr":178,"dist":1316,"sec":288},{"lat":-40.374977,"lng":175.639801,"hr":178,"dist":1351,"sec":296},{"lat":-40.374745,"lng":175.640008,"hr":179,"dist":1383,"sec":304},{"lat":-40.374462,"lng":175.640187,"hr":179,"dist":1417,"sec":312},{"lat":-40.374179,"lng":175.640366,"hr":179,"dist":1453,"sec":320},{"lat":-40.373896,"lng":175.640547,"hr":179,"dist":1488,"sec":328},{"lat":-40.373639,"lng":175.64078,"hr":179,"dist":1523,"sec":336},{"lat":-40.373382,"lng":175.641029,"hr":178,"dist":1558,"sec":344},{"lat":-40.373164,"lng":175.641306,"hr":176,"dist":1593,"sec":352},{"lat":-40.372881,"lng":175.641518,"hr":177,"dist":1628,"sec":360},{"lat":-40.372602,"lng":175.641652,"hr":179,"dist":1662,"sec":368},{"lat":-40.372323,"lng":175.641823,"hr":180,"dist":1696,"sec":376},{"lat":-40.372049,"lng":175.642016,"hr":181,"dist":1731,"sec":384},{"lat":-40.371761,"lng":175.642205,"hr":180,"dist":1767,"sec":392},{"lat":-40.371481,"lng":175.642406,"hr":180,"dist":1802,"sec":400},{"lat":-40.371212,"lng":175.642585,"hr":180,"dist":1836,"sec":408},{"lat":-40.370925,"lng":175.642823,"hr":180,"dist":1873,"sec":416},{"lat":-40.37066,"lng":175.643062,"hr":179,"dist":1909,"sec":424},{"lat":-40.370354,"lng":175.643241,"hr":180,"dist":1947,"sec":432},{"lat":-40.370069,"lng":175.643446,"hr":180,"dist":1983,"sec":440},{"lat":-40.369779,"lng":175.643663,"hr":180,"dist":2020,"sec":448},{"lat":-40.369512,"lng":175.643898,"hr":180,"dist":2056,"sec":456},{"lat":-40.369246,"lng":175.644094,"hr":180,"dist":2090,"sec":464},{"lat":-40.368972,"lng":175.644314,"hr":180,"dist":2125,"sec":472},{"lat":-40.368717,"lng":175.644532,"hr":180,"dist":2160,"sec":480},{"lat":-40.368486,"lng":175.644802,"hr":180,"dist":2194,"sec":488},{"lat":-40.36821,"lng":175.64505,"hr":181,"dist":2231,"sec":496},{"lat":-40.36796,"lng":175.645289,"hr":181,"dist":2266,"sec":504},{"lat":-40.367725,"lng":175.645606,"hr":180,"dist":2303,"sec":512},{"lat":-40.367479,"lng":175.645908,"hr":180,"dist":2341,"sec":520},{"lat":-40.367253,"lng":175.646228,"hr":184,"dist":2378,"sec":528},{"lat":-40.366958,"lng":175.646338,"hr":182,"dist":2412,"sec":536},{"lat":-40.366654,"lng":175.646349,"hr":180,"dist":2445,"sec":544},{"lat":-40.366344,"lng":175.646363,"hr":183,"dist":2481,"sec":552},{"lat":-40.366057,"lng":175.646525,"hr":183,"dist":2515,"sec":560},{"lat":-40.366315,"lng":175.646436,"hr":185,"dist":2545,"sec":568},{"lat":-40.36663,"lng":175.646394,"hr":186,"dist":2580,"sec":576},{"lat":-40.36697,"lng":175.646407,"hr":186,"dist":2618,"sec":584},{"lat":-40.367294,"lng":175.646303,"hr":186,"dist":2655,"sec":592},{"lat":-40.367509,"lng":175.645976,"hr":186,"dist":2693,"sec":600},{"lat":-40.367739,"lng":175.645679,"hr":185,"dist":2728,"sec":608},{"lat":-40.367936,"lng":175.64538,"hr":186,"dist":2762,"sec":616},{"lat":-40.368183,"lng":175.645124,"hr":185,"dist":2796,"sec":624},{"lat":-40.368453,"lng":175.644886,"hr":183,"dist":2833,"sec":632},{"lat":-40.368695,"lng":175.644648,"hr":187,"dist":2867,"sec":640},{"lat":-40.368949,"lng":175.644398,"hr":184,"dist":2902,"sec":648},{"lat":-40.369227,"lng":175.6442,"hr":183,"dist":2938,"sec":656},{"lat":-40.369501,"lng":175.643988,"hr":183,"dist":2973,"sec":664},{"lat":-40.369766,"lng":175.643773,"hr":184,"dist":3008,"sec":672},{"lat":-40.37003,"lng":175.643552,"hr":186,"dist":3043,"sec":680},{"lat":-40.370296,"lng":175.643349,"hr":185,"dist":3076,"sec":688},{"lat":-40.370573,"lng":175.643184,"hr":187,"dist":3111,"sec":696},{"lat":-40.370829,"lng":175.642988,"hr":191,"dist":3144,"sec":704},{"lat":-40.371106,"lng":175.642741,"hr":191,"dist":3181,"sec":712},{"lat":-40.371361,"lng":175.64254,"hr":191,"dist":3215,"sec":720},{"lat":-40.371642,"lng":175.642353,"hr":191,"dist":3249,"sec":728},{"lat":-40.371912,"lng":175.642165,"hr":191,"dist":3284,"sec":736},{"lat":-40.372185,"lng":175.64198,"hr":190,"dist":3317,"sec":744},{"lat":-40.372451,"lng":175.641792,"hr":191,"dist":3351,"sec":752},{"lat":-40.372746,"lng":175.641664,"hr":191,"dist":3385,"sec":760},{"lat":-40.373039,"lng":175.641496,"hr":192,"dist":3421,"sec":768},{"lat":-40.373272,"lng":175.641211,"hr":192,"dist":3457,"sec":776},{"lat":-40.373519,"lng":175.640949,"hr":192,"dist":3492,"sec":784},{"lat":-40.373775,"lng":175.640694,"hr":193,"dist":3528,"sec":792},{"lat":-40.374057,"lng":175.640511,"hr":193,"dist":3564,"sec":800},{"lat":-40.374315,"lng":175.640352,"hr":192,"dist":3594,"sec":808},{"lat":-40.37457,"lng":175.640167,"hr":191,"dist":3628,"sec":816},{"lat":-40.374853,"lng":175.639965,"hr":190,"dist":3663,"sec":824},{"lat":-40.37512,"lng":175.639673,"hr":190,"dist":3702,"sec":832},{"lat":-40.375352,"lng":175.639363,"hr":188,"dist":3739,"sec":840},{"lat":-40.375519,"lng":175.63899,"hr":185,"dist":3775,"sec":848},{"lat":-40.375543,"lng":175.638582,"hr":185,"dist":3811,"sec":856},{"lat":-40.375561,"lng":175.638176,"hr":185,"dist":3845,"sec":864},{"lat":-40.375635,"lng":175.637737,"hr":185,"dist":3884,"sec":872},{"lat":-40.375785,"lng":175.637344,"hr":186,"dist":3921,"sec":880},{"lat":-40.375703,"lng":175.636917,"hr":188,"dist":3959,"sec":888},{"lat":-40.375601,"lng":175.63652,"hr":186,"dist":3995,"sec":896},{"lat":-40.375634,"lng":175.636085,"hr":188,"dist":4032,"sec":904},{"lat":-40.375685,"lng":175.63563,"hr":189,"dist":4072,"sec":912},{"lat":-40.37564,"lng":175.635203,"hr":188,"dist":4109,"sec":920},{"lat":-40.375493,"lng":175.634824,"hr":189,"dist":4145,"sec":928},{"lat":-40.375333,"lng":175.634467,"hr":193,"dist":4180,"sec":936},{"lat":-40.375161,"lng":175.634107,"hr":193,"dist":4217,"sec":944},{"lat":-40.374961,"lng":175.633745,"hr":193,"dist":4254,"sec":952},{"lat":-40.374794,"lng":175.633395,"hr":195,"dist":4290,"sec":960},{"lat":-40.374614,"lng":175.633031,"hr":194,"dist":4326,"sec":968},{"lat":-40.374496,"lng":175.632652,"hr":194,"dist":4361,"sec":976},{"lat":-40.374334,"lng":175.632268,"hr":194,"dist":4398,"sec":984},{"lat":-40.374175,"lng":175.631928,"hr":193,"dist":4432,"sec":992},{"lat":-40.374046,"lng":175.63154,"hr":193,"dist":4468,"sec":1000},{"lat":-40.373923,"lng":175.631153,"hr":194,"dist":4504,"sec":1008},{"lat":-40.373804,"lng":175.630777,"hr":194,"dist":4538,"sec":1016},{"lat":-40.373686,"lng":175.630377,"hr":194,"dist":4575,"sec":1024},{"lat":-40.373601,"lng":175.629962,"hr":193,"dist":4611,"sec":1032},{"lat":-40.373484,"lng":175.629575,"hr":194,"dist":4647,"sec":1040},{"lat":-40.373296,"lng":175.629237,"hr":193,"dist":4684,"sec":1048},{"lat":-40.373396,"lng":175.628818,"hr":192,"dist":4721,"sec":1056},{"lat":-40.373395,"lng":175.628394,"hr":193,"dist":4757,"sec":1064},{"lat":-40.37336,"lng":175.627969,"hr":193,"dist":4793,"sec":1072},{"lat":-40.373323,"lng":175.627536,"hr":194,"dist":4831,"sec":1080},{"lat":-40.37325,"lng":175.627101,"hr":194,"dist":4868,"sec":1088},{"lat":-40.373212,"lng":175.626646,"hr":194,"dist":4908,"sec":1096},{"lat":-40.373195,"lng":175.626188,"hr":195,"dist":4947,"sec":1104},{"lat":-40.373097,"lng":175.625715,"hr":195,"dist":4988,"sec":1112}];
-
-const HR_SAMPLES = [139,139,145,154,165,170,171,171,172,173,173,174,175,174,175,175,176,175,176,176,176,176,176,176,176,176,176,175,175,177,178,178,179,179,179,178,178,178,179,179,179,179,178,176,177,179,180,181,180,180,180,180,180,179,180,180,180,180,180,180,181,181,180,180,184,182,180,183,183,185,186,186,186,186,185,186,185,183,187,184,183,183,184,186,185,187,191,191,191,191,191,190,191,191,192,192,192,193,193,192,191,190,190,188,185,185,185,185,186,188,186,188,189,188,189,193,193,193,195,194,194,194,193,193,194,194,194,193,194,193,192,193,193,193,194,194,194,195,195];
-
-// ═══════════════════════════════
-// CURSOR
-// ═══════════════════════════════
-const cur = document.getElementById('cur');
-const curR = document.getElementById('curR');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cur.style.cssText+=`;left:${mx-3.5}px;top:${my-3.5}px`; });
-(function animCur(){ rx+=(mx-rx)*0.11; ry+=(my-ry)*0.11; curR.style.cssText+=`;left:${rx-14}px;top:${ry-14}px`; requestAnimationFrame(animCur); })();
-
-// ═══════════════════════════════
-// PROGRESS BAR
-// ═══════════════════════════════
-const prog = document.getElementById('prog');
-window.addEventListener('scroll', () => {
-  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-  prog.style.width = (pct * 100) + '%';
-});
-
-// ═══════════════════════════════
-// SCROLL REVEALS
-// ═══════════════════════════════
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
-}, { threshold: 0.12 });
-document.querySelectorAll('.r').forEach(el => observer.observe(el));
-
-// ═══════════════════════════════
-// HR WAVE
-// ═══════════════════════════════
-(function buildHRWave() {
-  const svg = document.getElementById('hrWaveSvg');
-  const W = 1200, H = 120, pad = 8;
-  const minHR = 135, maxHR = 200;
-  const pts = HR_SAMPLES;
-
-  // Area fill
-  let area = `M0,${H} `;
-  pts.forEach((hr, i) => {
-    const x = (i / (pts.length - 1)) * W;
-    const y = pad + ((maxHR - hr) / (maxHR - minHR)) * (H - pad * 2);
-    area += `L${x.toFixed(1)},${y.toFixed(1)} `;
-  });
-  area += `L${W},${H} Z`;
-
-  // Line
-  let line = '';
-  pts.forEach((hr, i) => {
-    const x = (i / (pts.length - 1)) * W;
-    const y = pad + ((maxHR - hr) / (maxHR - minHR)) * (H - pad * 2);
-    line += (i === 0 ? `M` : `L`) + `${x.toFixed(1)},${y.toFixed(1)} `;
-  });
-
-  // Color stops based on HR intensity
-  const gradStops = pts.map((hr, i) => {
-    const pct = ((hr - 135) / 60);
-    const r = Math.round(139 + pct * 93);
-    const g = Math.round(52 - pct * 52);
-    const b = Math.round(26 - pct * 26);
-    const pos = ((i / (pts.length - 1)) * 100).toFixed(1);
-    return `<stop offset="${pos}%" stop-color="rgb(${r},${g},${b})"/>`;
-  });
-
-  svg.innerHTML = `
-    <defs>
-      <linearGradient id="hrGrad" x1="0" y1="0" x2="1" y2="0">${gradStops.join('')}</linearGradient>
-      <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="rgba(232,52,26,0.25)"/>
-        <stop offset="100%" stop-color="rgba(232,52,26,0)"/>
-      </linearGradient>
-    </defs>
-    <path d="${area}" fill="url(#areaGrad)"/>
-    <path d="${line}" fill="none" stroke="url(#hrGrad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    ${[1000,2000,3000,4000,5000].map((d,i) => {
-      const idx = Math.round((d/5000) * (pts.length-1));
-      const x = (idx / (pts.length-1)) * W;
-      return `<line x1="${x}" y1="0" x2="${x}" y2="${H}" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="3,3"/>
-              <text x="${x+6}" y="18" fill="rgba(255,255,255,0.2)" font-family="Barlow Condensed" font-size="10" letter-spacing="2">${i+1}K</text>`;
-    }).join('')}
-  `;
-})();
-
-// ═══════════════════════════════
-// GPS MAP
-// ═══════════════════════════════
-(function buildMap() {
-  const canvas = document.getElementById('routeCanvas');
-  const wrapper = canvas.parentElement;
-
-  function draw() {
-    const W = wrapper.clientWidth;
-    const H = wrapper.clientHeight;
-    canvas.width = W;
-    canvas.height = H;
-    const ctx = canvas.getContext('2d');
-
-    // Find bounds
-    const lats = GPS.map(p => p.lat);
-    const lngs = GPS.map(p => p.lng);
-    const minLat = Math.min(...lats), maxLat = Math.max(...lats);
-    const minLng = Math.min(...lngs), maxLng = Math.max(...lngs);
-    const pad = 70; // increased to prevent label clipping
-
-    const scaleX = (lng) => pad + ((lng - minLng) / (maxLng - minLng)) * (W - pad * 2);
-    const scaleY = (lat) => pad + ((lat - minLat) / (maxLat - minLat)) * (H - pad * 2);
-
-    ctx.clearRect(0, 0, W, H);
-
-    // Draw route colored by HR
-    for (let i = 1; i < GPS.length; i++) {
-      const p1 = GPS[i - 1], p2 = GPS[i];
-      const pct = (p1.hr - 135) / 60;
-      const r = Math.round(139 + pct * 93);
-      const g = Math.round(52 - pct * 52);
-      const b = 26;
-
-      ctx.beginPath();
-      ctx.moveTo(scaleX(p1.lng), H - scaleY(p1.lat));
-      ctx.lineTo(scaleX(p2.lng), H - scaleY(p2.lat));
-      ctx.strokeStyle = `rgba(${r},${g},${b},1)`;
-      ctx.lineWidth = 3.5;
-      ctx.lineCap = 'round';
-      ctx.stroke();
-    }
-
-    // Glow pass
-    ctx.globalAlpha = 0.4;
-    for (let i = 1; i < GPS.length; i++) {
-      const p1 = GPS[i - 1], p2 = GPS[i];
-      const pct = (p1.hr - 135) / 60;
-      ctx.beginPath();
-      ctx.moveTo(scaleX(p1.lng), H - scaleY(p1.lat));
-      ctx.lineTo(scaleX(p2.lng), H - scaleY(p2.lat));
-      ctx.strokeStyle = `rgba(232,${Math.round(100 - pct*80)},26,1)`;
-      ctx.lineWidth = 9;
-      ctx.stroke();
-    }
-    ctx.globalAlpha = 1;
-
-    // Start dot
-    const s = GPS[0];
-    ctx.beginPath();
-    ctx.arc(scaleX(s.lng), H - scaleY(s.lat), 6, 0, Math.PI * 2);
-    ctx.fillStyle = 'rgba(240,236,228,0.9)';
-    ctx.fill();
-    ctx.font = '9px "Barlow Condensed"';
-    ctx.letterSpacing = '2px';
-    ctx.fillStyle = 'rgba(255,255,255,0.35)';
-    ctx.fillText('START / FINISH', scaleX(s.lng) + 10, H - scaleY(s.lat) + 4);
-
-    // Turnaround dot
-    const mid = GPS[Math.floor(GPS.length / 2)];
-    ctx.beginPath();
-    ctx.arc(scaleX(mid.lng), H - scaleY(mid.lat), 5, 0, Math.PI * 2);
-    ctx.fillStyle = 'rgba(247,183,49,0.7)';
-    ctx.fill();
-    ctx.fillStyle = 'rgba(247,183,49,0.4)';
-    ctx.fillText('TURNAROUND', scaleX(mid.lng) + 8, H - scaleY(mid.lat) + 4);
-  }
-
-  draw();
-  window.addEventListener('resize', draw);
-})();
-
-// ═══════════════════════════════
-// AUDIO
-// ═══════════════════════════════
-let audioCtx = null;
-let heartbeatInterval = null;
-let audioOn = false;
-let currentBPM = 139;
-let targetBPM = 139;
-
-function getTargetBPM() {
-  const scrollPct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-  const idx = Math.min(Math.floor(scrollPct * HR_SAMPLES.length), HR_SAMPLES.length - 1);
-  return HR_SAMPLES[idx] || 160;
-}
-
-function playBeat(bpm) {
-  if (!audioCtx) return;
-  const now = audioCtx.currentTime + 0.05;
-  const osc = audioCtx.createOscillator();
-  const gain = audioCtx.createGain();
-  osc.connect(gain);
-  gain.connect(audioCtx.destination);
-  osc.type = 'sine';
-  osc.frequency.setValueAtTime(80, now);
-  osc.frequency.exponentialRampToValueAtTime(35, now + 0.1);
-  gain.gain.setValueAtTime(0.8, now);
-  gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
-  osc.start(now);
-  osc.stop(now + 0.2);
-  const osc2 = audioCtx.createOscillator();
-  const gain2 = audioCtx.createGain();
-  osc2.connect(gain2);
-  gain2.connect(audioCtx.destination);
-  osc2.type = 'sine';
-  osc2.frequency.setValueAtTime(60, now + 0.14);
-  osc2.frequency.exponentialRampToValueAtTime(28, now + 0.26);
-  gain2.gain.setValueAtTime(0.9, now + 0.14);
-  gain2.gain.exponentialRampToValueAtTime(0.001, now + 0.32);
-  osc2.start(now + 0.14);
-  osc2.stop(now + 0.34);
-}
-
-function startHeartbeat() {
-  if (heartbeatInterval) { clearTimeout(heartbeatInterval); heartbeatInterval = null; }
-  function tick() {
-    targetBPM = getTargetBPM();
-    currentBPM += (targetBPM - currentBPM) * 0.05;
-    const bpmRounded = Math.round(currentBPM);
-    document.getElementById('bpmVal').textContent = bpmRounded;
-    playBeat(bpmRounded);
-    heartbeatInterval = setTimeout(tick, (60 / bpmRounded) * 1000);
-  }
-  tick();
-}
-
-function stopHeartbeat() {
-  if (heartbeatInterval) { clearTimeout(heartbeatInterval); heartbeatInterval = null; }
-}
-
-function ensureAudioCtx() {
-  // Always create synchronously — must be called inside a user gesture
-  if (!audioCtx) {
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  }
-}
-
-function toggleAudio() {
-  const btn = document.getElementById('audioBtn');
-  if (!audioOn) {
-    ensureAudioCtx();
-    audioOn = true;
-    btn.textContent = '♪ heartbeat on';
-    document.getElementById('bpmDisplay').classList.add('show');
-    audioCtx.resume().then(() => {
-      setTimeout(() => { if (audioOn) startHeartbeat(); }, 80);
-    });
-  } else {
-    audioOn = false;
-    btn.textContent = '♪ heartbeat off';
-    document.getElementById('bpmDisplay').classList.remove('show');
-    stopHeartbeat();
-  }
-}
-
-let audioStarted = false;
-function startAudioOnGesture() {
-  if (audioStarted) return;
-  audioStarted = true;
-  ensureAudioCtx();
-  audioOn = true;
-  document.getElementById('audioBtn').textContent = '♪ heartbeat on';
-  document.getElementById('bpmDisplay').classList.add('show');
-  audioCtx.resume().then(() => {
-    setTimeout(() => { if (audioOn) startHeartbeat(); }, 80);
-  });
-  document.removeEventListener('touchend', startAudioOnGesture);
-  window.removeEventListener('scroll', startAudioOnGesture);
-}
-
-window.addEventListener('scroll', startAudioOnGesture, { passive: true });
-document.addEventListener('touchend', startAudioOnGesture, { passive: true });
-
-window.addEventListener('scroll', () => {
-  if (!audioOn) document.getElementById('bpmVal').textContent = getTargetBPM();
-}, { passive: true });
-
-window.addEventListener('scroll', () => {
-  const bg = document.querySelector('.hero-bg');
-  if (bg) bg.style.transform = `translateY(${window.scrollY * 0.25}px)`;
-});
-</script>
+<!-- ════════════ FOOTER ════════════ -->
 <footer style="background:#050505;border-top:1px solid rgba(255,255,255,0.05);padding:4vh 8vw;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem;">
   <div class="footer-col">
     <div style="font-size:9px;letter-spacing:0.4em;text-transform:uppercase;color:var(--muted);margin-bottom:0.8rem;">Running Coaching</div>
@@ -866,5 +543,218 @@ window.addEventListener('scroll', () => {
   </div>
 </footer>
 
+<script>
+// ═══════════════════════════════════════════
+// DATA — extracted from Sheridan's FIT file
+// ═══════════════════════════════════════════
+const GPS = [{"lat":-40.373047,"lng":175.625234,"hr":139,"dist":0,"sec":0},{"lat":-40.373138,"lng":175.625677,"hr":139,"dist":40,"sec":8},{"lat":-40.373189,"lng":175.62612,"hr":145,"dist":78,"sec":16},{"lat":-40.373193,"lng":175.626589,"hr":154,"dist":117,"sec":24},{"lat":-40.373216,"lng":175.627049,"hr":165,"dist":157,"sec":32},{"lat":-40.373278,"lng":175.627481,"hr":170,"dist":194,"sec":40},{"lat":-40.373326,"lng":175.627934,"hr":171,"dist":233,"sec":48},{"lat":-40.373359,"lng":175.628376,"hr":171,"dist":271,"sec":56},{"lat":-40.37338,"lng":175.628798,"hr":172,"dist":307,"sec":64},{"lat":-40.373269,"lng":175.629193,"hr":173,"dist":342,"sec":72},{"lat":-40.373453,"lng":175.629555,"hr":173,"dist":382,"sec":80},{"lat":-40.373578,"lng":175.629963,"hr":174,"dist":419,"sec":88},{"lat":-40.37367,"lng":175.630353,"hr":175,"dist":454,"sec":96},{"lat":-40.373787,"lng":175.630736,"hr":174,"dist":489,"sec":104},{"lat":-40.373903,"lng":175.631136,"hr":175,"dist":525,"sec":112},{"lat":-40.374043,"lng":175.631533,"hr":175,"dist":563,"sec":120},{"lat":-40.374169,"lng":175.631935,"hr":176,"dist":600,"sec":128},{"lat":-40.374349,"lng":175.632319,"hr":175,"dist":638,"sec":136},{"lat":-40.374505,"lng":175.632677,"hr":176,"dist":673,"sec":144},{"lat":-40.374652,"lng":175.633054,"hr":176,"dist":709,"sec":152},{"lat":-40.374829,"lng":175.633427,"hr":176,"dist":747,"sec":160},{"lat":-40.374998,"lng":175.633755,"hr":176,"dist":780,"sec":168},{"lat":-40.375164,"lng":175.634115,"hr":176,"dist":816,"sec":176},{"lat":-40.375335,"lng":175.634483,"hr":176,"dist":852,"sec":184},{"lat":-40.375494,"lng":175.63484,"hr":176,"dist":888,"sec":192},{"lat":-40.375654,"lng":175.635205,"hr":176,"dist":923,"sec":200},{"lat":-40.37567,"lng":175.635608,"hr":176,"dist":958,"sec":208},{"lat":-40.375617,"lng":175.636035,"hr":175,"dist":995,"sec":216},{"lat":-40.375583,"lng":175.636424,"hr":175,"dist":1028,"sec":224},{"lat":-40.375648,"lng":175.63683,"hr":177,"dist":1062,"sec":232},{"lat":-40.375824,"lng":175.637213,"hr":178,"dist":1101,"sec":240},{"lat":-40.37571,"lng":175.637598,"hr":178,"dist":1137,"sec":248},{"lat":-40.375583,"lng":175.63798,"hr":179,"dist":1172,"sec":256},{"lat":-40.375553,"lng":175.638379,"hr":179,"dist":1206,"sec":264},{"lat":-40.375556,"lng":175.63879,"hr":179,"dist":1241,"sec":272},{"lat":-40.375428,"lng":175.639211,"hr":178,"dist":1280,"sec":280},{"lat":-40.375203,"lng":175.639503,"hr":178,"dist":1316,"sec":288},{"lat":-40.374977,"lng":175.639801,"hr":178,"dist":1351,"sec":296},{"lat":-40.374745,"lng":175.640008,"hr":179,"dist":1383,"sec":304},{"lat":-40.374462,"lng":175.640187,"hr":179,"dist":1417,"sec":312},{"lat":-40.374179,"lng":175.640366,"hr":179,"dist":1453,"sec":320},{"lat":-40.373896,"lng":175.640547,"hr":179,"dist":1488,"sec":328},{"lat":-40.373639,"lng":175.64078,"hr":179,"dist":1523,"sec":336},{"lat":-40.373382,"lng":175.641029,"hr":178,"dist":1558,"sec":344},{"lat":-40.373164,"lng":175.641306,"hr":176,"dist":1593,"sec":352},{"lat":-40.372881,"lng":175.641518,"hr":177,"dist":1628,"sec":360},{"lat":-40.372602,"lng":175.641652,"hr":179,"dist":1662,"sec":368},{"lat":-40.372323,"lng":175.641823,"hr":180,"dist":1696,"sec":376},{"lat":-40.372049,"lng":175.642016,"hr":181,"dist":1731,"sec":384},{"lat":-40.371761,"lng":175.642205,"hr":180,"dist":1767,"sec":392},{"lat":-40.371481,"lng":175.642406,"hr":180,"dist":1802,"sec":400},{"lat":-40.371212,"lng":175.642585,"hr":180,"dist":1836,"sec":408},{"lat":-40.370925,"lng":175.642823,"hr":180,"dist":1873,"sec":416},{"lat":-40.37066,"lng":175.643062,"hr":179,"dist":1909,"sec":424},{"lat":-40.370354,"lng":175.643241,"hr":180,"dist":1947,"sec":432},{"lat":-40.370069,"lng":175.643446,"hr":180,"dist":1983,"sec":440},{"lat":-40.369779,"lng":175.643663,"hr":180,"dist":2020,"sec":448},{"lat":-40.369512,"lng":175.643898,"hr":180,"dist":2056,"sec":456},{"lat":-40.369246,"lng":175.644094,"hr":180,"dist":2090,"sec":464},{"lat":-40.368972,"lng":175.644314,"hr":180,"dist":2125,"sec":472},{"lat":-40.368717,"lng":175.644532,"hr":180,"dist":2160,"sec":480},{"lat":-40.368486,"lng":175.644802,"hr":180,"dist":2194,"sec":488},{"lat":-40.36821,"lng":175.64505,"hr":181,"dist":2231,"sec":496},{"lat":-40.36796,"lng":175.645289,"hr":181,"dist":2266,"sec":504},{"lat":-40.367725,"lng":175.645606,"hr":180,"dist":2303,"sec":512},{"lat":-40.367479,"lng":175.645908,"hr":180,"dist":2341,"sec":520},{"lat":-40.367253,"lng":175.646228,"hr":184,"dist":2378,"sec":528},{"lat":-40.366958,"lng":175.646338,"hr":182,"dist":2412,"sec":536},{"lat":-40.366654,"lng":175.646349,"hr":180,"dist":2445,"sec":544},{"lat":-40.366344,"lng":175.646363,"hr":183,"dist":2481,"sec":552},{"lat":-40.366057,"lng":175.646525,"hr":183,"dist":2515,"sec":560},{"lat":-40.366315,"lng":175.646436,"hr":185,"dist":2545,"sec":568},{"lat":-40.36663,"lng":175.646394,"hr":186,"dist":2580,"sec":576},{"lat":-40.36697,"lng":175.646407,"hr":186,"dist":2618,"sec":584},{"lat":-40.367294,"lng":175.646303,"hr":186,"dist":2655,"sec":592},{"lat":-40.367509,"lng":175.645976,"hr":186,"dist":2693,"sec":600},{"lat":-40.367739,"lng":175.645679,"hr":185,"dist":2728,"sec":608},{"lat":-40.367936,"lng":175.64538,"hr":186,"dist":2762,"sec":616},{"lat":-40.368183,"lng":175.645124,"hr":185,"dist":2796,"sec":624},{"lat":-40.368453,"lng":175.644886,"hr":183,"dist":2833,"sec":632},{"lat":-40.368695,"lng":175.644648,"hr":187,"dist":2867,"sec":640},{"lat":-40.368949,"lng":175.644398,"hr":184,"dist":2902,"sec":648},{"lat":-40.369227,"lng":175.6442,"hr":183,"dist":2938,"sec":656},{"lat":-40.369501,"lng":175.643988,"hr":183,"dist":2973,"sec":664},{"lat":-40.369766,"lng":175.643773,"hr":184,"dist":3008,"sec":672},{"lat":-40.37003,"lng":175.643552,"hr":186,"dist":3043,"sec":680},{"lat":-40.370296,"lng":175.643349,"hr":185,"dist":3076,"sec":688},{"lat":-40.370573,"lng":175.643184,"hr":187,"dist":3111,"sec":696},{"lat":-40.370829,"lng":175.642988,"hr":191,"dist":3144,"sec":704},{"lat":-40.371106,"lng":175.642741,"hr":191,"dist":3181,"sec":712},{"lat":-40.371361,"lng":175.64254,"hr":191,"dist":3215,"sec":720},{"lat":-40.371642,"lng":175.642353,"hr":191,"dist":3249,"sec":728},{"lat":-40.371912,"lng":175.642165,"hr":191,"dist":3284,"sec":736},{"lat":-40.372185,"lng":175.64198,"hr":190,"dist":3317,"sec":744},{"lat":-40.372451,"lng":175.641792,"hr":191,"dist":3351,"sec":752},{"lat":-40.372746,"lng":175.641664,"hr":191,"dist":3385,"sec":760},{"lat":-40.373039,"lng":175.641496,"hr":192,"dist":3421,"sec":768},{"lat":-40.373272,"lng":175.641211,"hr":192,"dist":3457,"sec":776},{"lat":-40.373519,"lng":175.640949,"hr":192,"dist":3492,"sec":784},{"lat":-40.373775,"lng":175.640694,"hr":193,"dist":3528,"sec":792},{"lat":-40.374057,"lng":175.640511,"hr":193,"dist":3564,"sec":800},{"lat":-40.374315,"lng":175.640352,"hr":192,"dist":3594,"sec":808},{"lat":-40.37457,"lng":175.640167,"hr":191,"dist":3628,"sec":816},{"lat":-40.374853,"lng":175.639965,"hr":190,"dist":3663,"sec":824},{"lat":-40.37512,"lng":175.639673,"hr":190,"dist":3702,"sec":832},{"lat":-40.375352,"lng":175.639363,"hr":188,"dist":3739,"sec":840},{"lat":-40.375519,"lng":175.63899,"hr":185,"dist":3775,"sec":848},{"lat":-40.375543,"lng":175.638582,"hr":185,"dist":3811,"sec":856},{"lat":-40.375561,"lng":175.638176,"hr":185,"dist":3845,"sec":864},{"lat":-40.375635,"lng":175.637737,"hr":185,"dist":3884,"sec":872},{"lat":-40.375785,"lng":175.637344,"hr":186,"dist":3921,"sec":880},{"lat":-40.375703,"lng":175.636917,"hr":188,"dist":3959,"sec":888},{"lat":-40.375601,"lng":175.63652,"hr":186,"dist":3995,"sec":896},{"lat":-40.375634,"lng":175.636085,"hr":188,"dist":4032,"sec":904},{"lat":-40.375685,"lng":175.63563,"hr":189,"dist":4072,"sec":912},{"lat":-40.37564,"lng":175.635203,"hr":188,"dist":4109,"sec":920},{"lat":-40.375493,"lng":175.634824,"hr":189,"dist":4145,"sec":928},{"lat":-40.375333,"lng":175.634467,"hr":193,"dist":4180,"sec":936},{"lat":-40.375161,"lng":175.634107,"hr":193,"dist":4217,"sec":944},{"lat":-40.374961,"lng":175.633745,"hr":193,"dist":4254,"sec":952},{"lat":-40.374794,"lng":175.633395,"hr":195,"dist":4290,"sec":960},{"lat":-40.374614,"lng":175.633031,"hr":194,"dist":4326,"sec":968},{"lat":-40.374496,"lng":175.632652,"hr":194,"dist":4361,"sec":976},{"lat":-40.374334,"lng":175.632268,"hr":194,"dist":4398,"sec":984},{"lat":-40.374175,"lng":175.631928,"hr":193,"dist":4432,"sec":992},{"lat":-40.374046,"lng":175.63154,"hr":193,"dist":4468,"sec":1000},{"lat":-40.373923,"lng":175.631153,"hr":194,"dist":4504,"sec":1008},{"lat":-40.373804,"lng":175.630777,"hr":194,"dist":4538,"sec":1016},{"lat":-40.373686,"lng":175.630377,"hr":194,"dist":4575,"sec":1024},{"lat":-40.373601,"lng":175.629962,"hr":193,"dist":4611,"sec":1032},{"lat":-40.373484,"lng":175.629575,"hr":194,"dist":4647,"sec":1040},{"lat":-40.373296,"lng":175.629237,"hr":193,"dist":4684,"sec":1048},{"lat":-40.373396,"lng":175.628818,"hr":192,"dist":4721,"sec":1056},{"lat":-40.373395,"lng":175.628394,"hr":193,"dist":4757,"sec":1064},{"lat":-40.37336,"lng":175.627969,"hr":193,"dist":4793,"sec":1072},{"lat":-40.373323,"lng":175.627536,"hr":194,"dist":4831,"sec":1080},{"lat":-40.37325,"lng":175.627101,"hr":194,"dist":4868,"sec":1088},{"lat":-40.373212,"lng":175.626646,"hr":194,"dist":4908,"sec":1096},{"lat":-40.373195,"lng":175.626188,"hr":195,"dist":4947,"sec":1104},{"lat":-40.373097,"lng":175.625715,"hr":195,"dist":4988,"sec":1112}];
+
+const HR_SAMPLES = [139,139,145,154,165,170,171,171,172,173,173,174,175,174,175,175,176,175,176,176,176,176,176,176,176,176,176,175,175,177,178,178,179,179,179,178,178,178,179,179,179,179,178,176,177,179,180,181,180,180,180,180,180,179,180,180,180,180,180,180,181,181,180,180,184,182,180,183,183,185,186,186,186,186,185,186,185,183,187,184,183,183,184,186,185,187,191,191,191,191,191,190,191,191,192,192,192,193,193,192,191,190,190,188,185,185,185,185,186,188,186,188,189,188,189,193,193,193,195,194,194,194,193,193,194,194,194,193,194,193,192,193,193,193,194,194,194,195,195];
+
+// ═══════════════════════════════
+// CURSOR
+// ═══════════════════════════════
+const cur = document.getElementById('cur');
+const curR = document.getElementById('curR');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove', e => {
+  mx=e.clientX; my=e.clientY;
+  cur.style.left=(mx-3.5)+'px'; cur.style.top=(my-3.5)+'px';
+});
+(function animCur(){
+  rx+=(mx-rx)*0.11; ry+=(my-ry)*0.11;
+  curR.style.left=(rx-14)+'px'; curR.style.top=(ry-14)+'px';
+  requestAnimationFrame(animCur);
+})();
+
+// ═══════════════════════════════
+// PROGRESS BAR
+// ═══════════════════════════════
+window.addEventListener('scroll', () => {
+  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+  document.getElementById('prog').style.width = (pct * 100) + '%';
+}, { passive:true });
+
+// ═══════════════════════════════
+// SCROLL REVEALS
+// ═══════════════════════════════
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold:0.12 });
+document.querySelectorAll('.r').forEach(el => observer.observe(el));
+
+// ═══════════════════════════════
+// HR WAVE
+// ═══════════════════════════════
+(function buildHRWave(){
+  const svg = document.getElementById('hrWaveSvg');
+  const W=1200, H=120, pad=8, minHR=135, maxHR=200;
+  const pts = HR_SAMPLES;
+  let area = 'M0,'+H+' ', line = '';
+  pts.forEach((hr,i) => {
+    const x = (i/(pts.length-1))*W;
+    const y = pad+((maxHR-hr)/(maxHR-minHR))*(H-pad*2);
+    area += 'L'+x.toFixed(1)+','+y.toFixed(1)+' ';
+    line += (i===0?'M':'L')+x.toFixed(1)+','+y.toFixed(1)+' ';
+  });
+  area += 'L'+W+','+H+' Z';
+  const stops = pts.map((hr,i) => {
+    const p=(hr-135)/60;
+    return '<stop offset="'+(i/(pts.length-1)*100).toFixed(1)+'%" stop-color="rgb('+Math.round(139+p*93)+','+Math.round(52-p*52)+','+Math.round(26-p*26)+')"/>';
+  });
+  svg.innerHTML = '<defs>'
+    +'<linearGradient id="hrGrad" x1="0" y1="0" x2="1" y2="0">'+stops.join('')+'</linearGradient>'
+    +'<linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(232,52,26,0.25)"/><stop offset="100%" stop-color="rgba(232,52,26,0)"/></linearGradient>'
+    +'</defs>'
+    +'<path d="'+area+'" fill="url(#areaGrad)"/>'
+    +'<path d="'+line+'" fill="none" stroke="url(#hrGrad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
+    +[1,2,3,4,5].map(k => {
+      const idx = Math.round((k/5)*(pts.length-1));
+      const x = (idx/(pts.length-1))*W;
+      return '<line x1="'+x+'" y1="0" x2="'+x+'" y2="'+H+'" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="3,3"/>'
+            +'<text x="'+(x+6)+'" y="18" fill="rgba(255,255,255,0.2)" font-family="Barlow Condensed" font-size="10" letter-spacing="2">'+k+'K</text>';
+    }).join('');
+})();
+
+// ═══════════════════════════════
+// GPS MAP
+// ═══════════════════════════════
+(function buildMap(){
+  const canvas = document.getElementById('routeCanvas');
+  const wrapper = canvas.parentElement;
+  function draw(){
+    const W=wrapper.clientWidth, H=wrapper.clientHeight;
+    canvas.width=W; canvas.height=H;
+    const ctx=canvas.getContext('2d');
+    const lats=GPS.map(p=>p.lat), lngs=GPS.map(p=>p.lng);
+    const minLat=Math.min(...lats), maxLat=Math.max(...lats);
+    const minLng=Math.min(...lngs), maxLng=Math.max(...lngs);
+    const pad=70;
+    const sx=lng=>pad+((lng-minLng)/(maxLng-minLng))*(W-pad*2);
+    const sy=lat=>pad+((lat-minLat)/(maxLat-minLat))*(H-pad*2);
+    ctx.clearRect(0,0,W,H);
+    for(let i=1;i<GPS.length;i++){
+      const p1=GPS[i-1],p2=GPS[i],pct=(p1.hr-135)/60;
+      ctx.beginPath();
+      ctx.moveTo(sx(p1.lng),H-sy(p1.lat));
+      ctx.lineTo(sx(p2.lng),H-sy(p2.lat));
+      ctx.strokeStyle='rgba('+Math.round(139+pct*93)+','+Math.round(52-pct*52)+',26,1)';
+      ctx.lineWidth=3.5; ctx.lineCap='round'; ctx.stroke();
+    }
+    ctx.globalAlpha=0.4;
+    for(let i=1;i<GPS.length;i++){
+      const p1=GPS[i-1],p2=GPS[i],pct=(p1.hr-135)/60;
+      ctx.beginPath();
+      ctx.moveTo(sx(p1.lng),H-sy(p1.lat));
+      ctx.lineTo(sx(p2.lng),H-sy(p2.lat));
+      ctx.strokeStyle='rgba(232,'+Math.round(100-pct*80)+',26,1)';
+      ctx.lineWidth=9; ctx.stroke();
+    }
+    ctx.globalAlpha=1;
+    const s=GPS[0];
+    ctx.beginPath();
+    ctx.arc(sx(s.lng),H-sy(s.lat),6,0,Math.PI*2);
+    ctx.fillStyle='rgba(240,236,228,0.9)'; ctx.fill();
+    ctx.font='9px "Barlow Condensed"';
+    ctx.fillStyle='rgba(255,255,255,0.35)';
+    ctx.fillText('START / FINISH',sx(s.lng)+10,H-sy(s.lat)+4);
+    const mid=GPS[Math.floor(GPS.length/2)];
+    ctx.beginPath();
+    ctx.arc(sx(mid.lng),H-sy(mid.lat),5,0,Math.PI*2);
+    ctx.fillStyle='rgba(247,183,49,0.7)'; ctx.fill();
+    ctx.fillStyle='rgba(247,183,49,0.4)';
+    ctx.fillText('TURNAROUND',sx(mid.lng)+8,H-sy(mid.lat)+4);
+  }
+  draw();
+  window.addEventListener('resize',draw);
+})();
+
+// ═══════════════════════════════
+// AUDIO — Web Audio Heartbeat
+// ═══════════════════════════════
+let audioCtx = null;
+let heartbeatInterval = null;
+let audioOn = false;
+let currentBPM = 139;
+
+function getTargetBPM(){
+  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+  const idx = Math.min(Math.floor(pct * HR_SAMPLES.length), HR_SAMPLES.length-1);
+  return HR_SAMPLES[idx] || 160;
+}
+
+function playBeat(){
+  if(!audioCtx) return;
+  const now = audioCtx.currentTime + 0.05;
+  // Thud 1
+  const o1=audioCtx.createOscillator(), g1=audioCtx.createGain();
+  o1.connect(g1); g1.connect(audioCtx.destination);
+  o1.type='sine';
+  o1.frequency.setValueAtTime(80,now);
+  o1.frequency.exponentialRampToValueAtTime(35,now+0.1);
+  g1.gain.setValueAtTime(0.8,now);
+  g1.gain.exponentialRampToValueAtTime(0.001,now+0.18);
+  o1.start(now); o1.stop(now+0.2);
+  // Thud 2
+  const o2=audioCtx.createOscillator(), g2=audioCtx.createGain();
+  o2.connect(g2); g2.connect(audioCtx.destination);
+  o2.type='sine';
+  o2.frequency.setValueAtTime(60,now+0.14);
+  o2.frequency.exponentialRampToValueAtTime(28,now+0.26);
+  g2.gain.setValueAtTime(0.9,now+0.14);
+  g2.gain.exponentialRampToValueAtTime(0.001,now+0.32);
+  o2.start(now+0.14); o2.stop(now+0.34);
+}
+
+function startHeartbeat(){
+  if(heartbeatInterval){ clearTimeout(heartbeatInterval); heartbeatInterval=null; }
+  function tick(){
+    const target = getTargetBPM();
+    currentBPM += (target - currentBPM) * 0.05;
+    const bpm = Math.round(currentBPM);
+    document.getElementById('bpmVal').textContent = bpm;
+    playBeat();
+    heartbeatInterval = setTimeout(tick, (60/bpm)*1000);
+  }
+  tick();
+}
+
+function stopHeartbeat(){
+  if(heartbeatInterval){ clearTimeout(heartbeatInterval); heartbeatInterval=null; }
+}
+
+function toggleAudio(){
+  const btn = document.getElementById('audioBtn');
+  if(!audioOn){
+    // Must create AudioContext synchronously inside the tap handler
+    if(!audioCtx){
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    audioOn = true;
+    btn.textContent = '♥ heartbeat on';
+    btn.classList.add('is-on');
+    document.getElementById('bpmDisplay').classList.add('show');
+    // resume() resolves immediately if already running, or unlocks on iOS
+    audioCtx.resume().then(() => startHeartbeat());
+  } else {
+    audioOn = false;
+    btn.textContent = '♥ tap for heartbeat';
+    btn.classList.remove('is-on');
+    document.getElementById('bpmDisplay').classList.remove('show');
+    stopHeartbeat();
+  }
+}
+
+// BPM counter tracks scroll position even when audio is off
+window.addEventListener('scroll', () => {
+  if(!audioOn) document.getElementById('bpmVal').textContent = getTargetBPM();
+}, { passive:true });
+
+// Parallax hero
+window.addEventListener('scroll', () => {
+  const bg = document.querySelector('.hero-bg');
+  if(bg) bg.style.transform = 'translateY('+(window.scrollY*0.25)+'px)';
+}, { passive:true });
+</script>
 </body>
 </html>
