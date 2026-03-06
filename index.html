@@ -71,6 +71,11 @@
 }
 </script>
 
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,400;1,400;1,600&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -310,11 +315,12 @@
     /* BPM counter — move up so footer links don't clash */
     #bpmDisplay { bottom:5rem; }
 
-    /* Audio button */
-    #audioBtn { font-size:9px; padding:0.5rem 0.9rem; bottom:1.5rem; right:1.2rem; }
+    /* Audio button — move to left on mobile so footer links aren't covered */
+    #audioBtn { bottom:1.5rem; right:auto; left:1.2rem; font-size:9px; padding:0.5rem 0.9rem; }
+    #bpmDisplay { bottom:5rem; left:auto; right:1.2rem; }
 
     /* Footer — single column */
-    footer { flex-direction:column; align-items:flex-start; gap:1.5rem; padding:4vh 6vw 6vh; }
+    footer { flex-direction:column; align-items:flex-start; gap:1.5rem; padding:4vh 6vw 7rem; }
     footer > div { text-align:left !important; }
     footer a { font-size:1.15rem; }
   }
@@ -743,8 +749,6 @@ function getTargetBPM() {
 function playBeat(bpm) {
   if (!audioCtx || audioCtx.state === 'suspended') return;
   const now = audioCtx.currentTime;
-
-  // Low thud (lub) — use setValueAtTime not linearRamp for reliability
   const osc = audioCtx.createOscillator();
   const gain = audioCtx.createGain();
   osc.connect(gain);
@@ -756,8 +760,6 @@ function playBeat(bpm) {
   gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
   osc.start(now);
   osc.stop(now + 0.2);
-
-  // Second beat (DUB) — slightly louder, slightly lower
   const osc2 = audioCtx.createOscillator();
   const gain2 = audioCtx.createGain();
   osc2.connect(gain2);
@@ -793,7 +795,6 @@ async function initAudio() {
   if (!audioCtx) {
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
   }
-  // Resume if suspended (autoplay policy)
   if (audioCtx.state === 'suspended') {
     await audioCtx.resume();
   }
@@ -815,7 +816,6 @@ async function toggleAudio() {
   }
 }
 
-// Auto-start heartbeat on first scroll interaction
 let audioStarted = false;
 window.addEventListener('scroll', async () => {
   if (!audioStarted) {
@@ -828,14 +828,12 @@ window.addEventListener('scroll', async () => {
   }
 }, { passive: true });
 
-// Update BPM display on scroll when audio off
 window.addEventListener('scroll', () => {
   if (!audioOn) {
     document.getElementById('bpmVal').textContent = getTargetBPM();
   }
 }, { passive: true });
 
-// Parallax hero
 window.addEventListener('scroll', () => {
   const bg = document.querySelector('.hero-bg');
   if (bg) bg.style.transform = `translateY(${window.scrollY * 0.25}px)`;
