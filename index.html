@@ -93,10 +93,12 @@
     overflow-x: hidden;
     cursor: none;
   }
+  @media(hover:none),(pointer:coarse){ body{cursor:auto;} }
 
-  /* Custom cursor */
+  /* Custom cursor — desktop only */
   #cur { position:fixed;width:7px;height:7px;background:var(--red);border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:screen; }
   #curR { position:fixed;width:28px;height:28px;border:1px solid rgba(232,52,26,0.35);border-radius:50%;pointer-events:none;z-index:9998;transition:transform 0.12s ease; }
+  @media(hover:none),(pointer:coarse){ #cur,#curR{display:none;} body{cursor:auto;} }
 
   /* Grain */
   body::before {
@@ -115,8 +117,9 @@
     background:rgba(232,52,26,0.15);border:1px solid rgba(232,52,26,0.3);
     color:var(--red);font-family:'Barlow Condensed',sans-serif;
     font-size:10px;letter-spacing:0.3em;text-transform:uppercase;
-    padding:0.6rem 1.2rem;cursor:none;transition:all 0.2s ease;
-    backdrop-filter:blur(4px);
+    padding:0.6rem 1.2rem;cursor:pointer;transition:all 0.2s ease;
+    backdrop-filter:blur(4px);-webkit-tap-highlight-color:transparent;
+    touch-action:manipulation;
   }
   #audioBtn:hover { background:rgba(232,52,26,0.25); }
 
@@ -257,13 +260,73 @@
 
   /* ─── RESPONSIVE ─── */
   @media(max-width:768px){
-    .two-col{grid-template-columns:1fr;}
-    .two-col.flip .col-text,.two-col.flip .col-vis{order:unset;}
-    .hero-data{display:none;}
-    .ering{width:220px;height:220px;}
-    .ring-wrap{min-height:280px;}
-    .map-wrap{height:300px;}
-    .finish-grid{gap:2.5rem;}
+    /* Layout */
+    .two-col { grid-template-columns:1fr; gap:2.5rem; }
+    .two-col.flip .col-text, .two-col.flip .col-vis { order:unset; }
+    .section { padding:7vh 6vw; }
+
+    /* Hero */
+    .hero { padding:0 6vw; }
+    .hero-data { display:none; }
+    .hero-title { font-size:clamp(4rem,18vw,7rem); }
+    .hero-sub { font-size:1rem; margin-top:1.2rem; }
+    .scroll-hint { bottom:1.5rem; }
+
+    /* KM badges & titles */
+    .km-badge { font-size:9px; margin-bottom:0.8rem; }
+    .km-title { font-size:clamp(2.4rem,10vw,3.8rem); margin-bottom:1rem; }
+    .km-prose { font-size:1rem; line-height:1.7; }
+
+    /* Splits */
+    .split-row { gap:1.5rem; margin-top:1.8rem; flex-wrap:wrap; }
+    .split-val { font-size:clamp(1.6rem,7vw,2.4rem); }
+
+    /* Rings — smaller, still centred */
+    .ring-wrap { min-height:240px; }
+    .ering { width:190px; height:190px; }
+    .ering-pct { font-size:2.8rem; }
+
+    /* ECG */
+    .ecg-wrap { height:200px; }
+
+    /* GPS map */
+    .map-wrap { height:260px; }
+
+    /* Lydia */
+    .lydia-title { font-size:clamp(1.9rem,7.5vw,3rem); margin-bottom:2rem; line-height:0.92; }
+    .lydia-kicker { margin-bottom:1.2rem; }
+    .lydia-prose { font-size:1rem; line-height:1.75; }
+
+    /* Finish */
+    .finish-section { padding:6vh 6vw; }
+    .finish-time { font-size:clamp(5rem,22vw,10rem); }
+    .finish-quote { font-size:1.05rem; margin-top:1.2rem; }
+    .finish-grid { gap:2rem; margin-top:0; }
+    .fstat-val { font-size:clamp(2rem,8vw,3rem); }
+
+    /* HR wave */
+    #hrWaveSvg { height:80px; }
+
+    /* BPM counter — move up so footer links don't clash */
+    #bpmDisplay { bottom:5rem; }
+
+    /* Audio button */
+    #audioBtn { font-size:9px; padding:0.5rem 0.9rem; bottom:1.5rem; right:1.2rem; }
+
+    /* Footer — single column */
+    footer { flex-direction:column; align-items:flex-start; gap:1.5rem; padding:4vh 6vw 6vh; }
+    footer > div { text-align:left !important; }
+    footer a { font-size:1.15rem; }
+  }
+
+  @media(max-width:480px){
+    .km-title { font-size:clamp(2rem,9vw,3rem); }
+    .lydia-title { font-size:clamp(1.6rem,7vw,2.4rem); }
+    .split-val { font-size:1.5rem; }
+    .ering { width:160px; height:160px; }
+    .ering-pct { font-size:2.2rem; }
+    .ring-wrap { min-height:200px; }
+    .finish-time { font-size:clamp(4.5rem,20vw,9rem); }
   }
 </style>
 </head>
@@ -678,40 +741,38 @@ function getTargetBPM() {
 }
 
 function playBeat(bpm) {
-  if (!audioCtx) return;
+  if (!audioCtx || audioCtx.state === 'suspended') return;
   const now = audioCtx.currentTime;
 
-  // Low thud
+  // Low thud (lub) — use setValueAtTime not linearRamp for reliability
   const osc = audioCtx.createOscillator();
   const gain = audioCtx.createGain();
   osc.connect(gain);
   gain.connect(audioCtx.destination);
   osc.type = 'sine';
-  osc.frequency.setValueAtTime(60, now);
-  osc.frequency.exponentialRampToValueAtTime(30, now + 0.08);
-  gain.gain.setValueAtTime(0, now);
-  gain.gain.linearRampToValueAtTime(0.7, now + 0.01);
-  gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+  osc.frequency.setValueAtTime(80, now);
+  osc.frequency.exponentialRampToValueAtTime(35, now + 0.1);
+  gain.gain.setValueAtTime(0.8, now);
+  gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
   osc.start(now);
-  osc.stop(now + 0.15);
+  osc.stop(now + 0.2);
 
-  // Second beat (lub-DUB)
+  // Second beat (DUB) — slightly louder, slightly lower
   const osc2 = audioCtx.createOscillator();
   const gain2 = audioCtx.createGain();
   osc2.connect(gain2);
   gain2.connect(audioCtx.destination);
   osc2.type = 'sine';
-  osc2.frequency.setValueAtTime(50, now + 0.12);
-  osc2.frequency.exponentialRampToValueAtTime(25, now + 0.22);
-  gain2.gain.setValueAtTime(0, now + 0.12);
-  gain2.gain.linearRampToValueAtTime(0.5, now + 0.13);
-  gain2.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
-  osc2.start(now + 0.12);
-  osc2.stop(now + 0.28);
+  osc2.frequency.setValueAtTime(60, now + 0.14);
+  osc2.frequency.exponentialRampToValueAtTime(28, now + 0.26);
+  gain2.gain.setValueAtTime(0.9, now + 0.14);
+  gain2.gain.exponentialRampToValueAtTime(0.001, now + 0.32);
+  osc2.start(now + 0.14);
+  osc2.stop(now + 0.34);
 }
 
 function startHeartbeat() {
-  if (heartbeatInterval) clearInterval(heartbeatInterval);
+  if (heartbeatInterval) { clearTimeout(heartbeatInterval); heartbeatInterval = null; }
   function tick() {
     targetBPM = getTargetBPM();
     currentBPM += (targetBPM - currentBPM) * 0.05;
@@ -728,10 +789,20 @@ function stopHeartbeat() {
   if (heartbeatInterval) { clearTimeout(heartbeatInterval); heartbeatInterval = null; }
 }
 
-function toggleAudio() {
+async function initAudio() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  // Resume if suspended (autoplay policy)
+  if (audioCtx.state === 'suspended') {
+    await audioCtx.resume();
+  }
+}
+
+async function toggleAudio() {
   const btn = document.getElementById('audioBtn');
   if (!audioOn) {
-    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    await initAudio();
     audioOn = true;
     btn.textContent = '♪ heartbeat on';
     document.getElementById('bpmDisplay').classList.add('show');
@@ -744,20 +815,24 @@ function toggleAudio() {
   }
 }
 
-// Auto-start heartbeat on first scroll (requires user gesture)
+// Auto-start heartbeat on first scroll interaction
 let audioStarted = false;
-window.addEventListener('scroll', () => {
+window.addEventListener('scroll', async () => {
   if (!audioStarted) {
     audioStarted = true;
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    await initAudio();
     audioOn = true;
     document.getElementById('audioBtn').textContent = '♪ heartbeat on';
     document.getElementById('bpmDisplay').classList.add('show');
     startHeartbeat();
   }
-  if (audioOn) return;
-  const t = getTargetBPM();
-  document.getElementById('bpmVal').textContent = t;
+}, { passive: true });
+
+// Update BPM display on scroll when audio off
+window.addEventListener('scroll', () => {
+  if (!audioOn) {
+    document.getElementById('bpmVal').textContent = getTargetBPM();
+  }
 }, { passive: true });
 
 // Parallax hero
