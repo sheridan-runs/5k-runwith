@@ -756,7 +756,7 @@ function getTargetBPM() {
 }
 
 function playBeat(bpm) {
-  if (!audioCtx || audioCtx.state === 'suspended') return;
+  if (!audioCtx) return;
   const now = audioCtx.currentTime;
   const osc = audioCtx.createOscillator();
   const gain = audioCtx.createGain();
@@ -826,18 +826,24 @@ async function toggleAudio() {
 }
 
 let audioStarted = false;
-window.addEventListener('scroll', () => {
-  if (!audioStarted) {
-    audioStarted = true;
-    // Create context synchronously inside the gesture, then resume async
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    audioOn = true;
-    document.getElementById('audioBtn').textContent = '♪ heartbeat on';
-    document.getElementById('bpmDisplay').classList.add('show');
-    // Resume handles the suspended state, then start beating
-    audioCtx.resume().then(() => startHeartbeat());
-  }
-}, { passive: true });
+
+function startAudioOnGesture() {
+  if (audioStarted) return;
+  audioStarted = true;
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  audioOn = true;
+  document.getElementById('audioBtn').textContent = '♪ heartbeat on';
+  document.getElementById('bpmDisplay').classList.add('show');
+  audioCtx.resume().then(() => { if (audioOn) startHeartbeat(); });
+  // Remove both listeners once fired
+  document.removeEventListener('touchend', startAudioOnGesture);
+  window.removeEventListener('scroll', startAudioOnGesture);
+}
+
+// Desktop: scroll works fine as a gesture trigger
+window.addEventListener('scroll', startAudioOnGesture, { passive: true });
+// iOS Safari: requires an actual touch gesture
+document.addEventListener('touchend', startAudioOnGesture, { passive: true });
 
 window.addEventListener('scroll', () => {
   if (!audioOn) {
