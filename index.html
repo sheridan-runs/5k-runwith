@@ -314,15 +314,6 @@
 
     /* BPM counter — move up so footer links don't clash */
     #bpmDisplay { bottom:5rem; }
-
-    /* Audio button — move to left on mobile so footer links aren't covered */
-    #audioBtn { bottom:1.5rem; right:auto; left:1.2rem; font-size:9px; padding:0.5rem 0.9rem; }
-    #bpmDisplay { bottom:5rem; left:auto; right:1.2rem; }
-
-    /* Footer — single column */
-    footer { flex-direction:column; align-items:flex-start; gap:1.5rem; padding:4vh 6vw 7rem; }
-    footer > div { text-align:left !important; }
-    footer a { font-size:1.15rem; }
   }
 
   @media(max-width:480px){
@@ -333,6 +324,24 @@
     .ering-pct { font-size:2.2rem; }
     .ring-wrap { min-height:200px; }
     .finish-time { font-size:clamp(4.5rem,20vw,9rem); }
+  }
+
+  /* Footer classes */
+  .footer-col { display:flex; flex-direction:column; }
+  .footer-col-center { text-align:center; }
+  .footer-col-right { text-align:right; }
+  .footer-link { font-size:1.4rem;font-weight:700;letter-spacing:-0.02em;text-decoration:none;text-transform:uppercase;transition:opacity 0.2s ease; }
+  .footer-link:hover { opacity:0.7; }
+  .footer-link-red { color:var(--red); }
+  .footer-link-muted { color:rgba(240,236,228,0.5); }
+
+  @media(max-width:768px){
+    /* Override the earlier footer rule - stack all left-aligned */
+    footer { flex-direction:column; align-items:flex-start; gap:1.5rem; padding:4vh 6vw 7rem; }
+    .footer-col, .footer-col-center, .footer-col-right { text-align:left; }
+    .footer-link { font-size:1.15rem; }
+    #audioBtn { bottom:1.5rem; right:auto; left:1.2rem; font-size:9px; padding:0.5rem 0.9rem; }
+    #bpmDisplay { bottom:5rem; left:auto; right:1.2rem; }
   }
 </style>
 </head>
@@ -817,14 +826,16 @@ async function toggleAudio() {
 }
 
 let audioStarted = false;
-window.addEventListener('scroll', async () => {
+window.addEventListener('scroll', () => {
   if (!audioStarted) {
     audioStarted = true;
-    await initAudio();
+    // Create context synchronously inside the gesture, then resume async
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     audioOn = true;
     document.getElementById('audioBtn').textContent = '♪ heartbeat on';
     document.getElementById('bpmDisplay').classList.add('show');
-    startHeartbeat();
+    // Resume handles the suspended state, then start beating
+    audioCtx.resume().then(() => startHeartbeat());
   }
 }, { passive: true });
 
@@ -839,19 +850,18 @@ window.addEventListener('scroll', () => {
   if (bg) bg.style.transform = `translateY(${window.scrollY * 0.25}px)`;
 });
 </script>
-<!-- ════════════ FOOTER ════════════ -->
 <footer style="background:#050505;border-top:1px solid rgba(255,255,255,0.05);padding:4vh 8vw;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem;">
-  <div>
+  <div class="footer-col">
     <div style="font-size:9px;letter-spacing:0.4em;text-transform:uppercase;color:var(--muted);margin-bottom:0.8rem;">Running Coaching</div>
-    <a href="https://runwith.club" target="_blank" style="color:var(--red);font-size:1.4rem;font-weight:700;letter-spacing:-0.02em;text-decoration:none;text-transform:uppercase;transition:opacity 0.2s ease;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">runwith.club →</a>
+    <a href="https://runwith.club" target="_blank" class="footer-link footer-link-red">runwith.club →</a>
   </div>
-  <div style="text-align:center;">
+  <div class="footer-col footer-col-center">
     <div style="font-size:9px;letter-spacing:0.4em;text-transform:uppercase;color:rgba(255,255,255,0.1);">Palmerston North · 27 Feb 2026</div>
     <div style="font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.06);margin-top:0.4rem;">18:38 · Personal Best</div>
   </div>
-  <div style="text-align:right;">
+  <div class="footer-col footer-col-right">
     <div style="font-size:9px;letter-spacing:0.4em;text-transform:uppercase;color:var(--muted);margin-bottom:0.8rem;">Sheridan Jamieson</div>
-    <a href="https://sheridanjamieson.com" target="_blank" style="color:rgba(240,236,228,0.5);font-size:1.4rem;font-weight:700;letter-spacing:-0.02em;text-decoration:none;text-transform:uppercase;transition:opacity 0.2s ease;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">sheridanjamieson.com →</a>
+    <a href="https://sheridanjamieson.com" target="_blank" class="footer-link footer-link-muted">sheridanjamieson.com →</a>
   </div>
 </footer>
 
