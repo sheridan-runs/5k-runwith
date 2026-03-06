@@ -741,7 +741,7 @@ document.querySelectorAll('.r').forEach(el => observer.observe(el));
 })();
 
 // ═══════════════════════════════
-// AUDIO — Web Audio Heartbeat
+// AUDIO
 // ═══════════════════════════════
 let audioCtx = null;
 let heartbeatInterval = null;
@@ -790,8 +790,7 @@ function startHeartbeat() {
     const bpmRounded = Math.round(currentBPM);
     document.getElementById('bpmVal').textContent = bpmRounded;
     playBeat(bpmRounded);
-    const interval = (60 / bpmRounded) * 1000;
-    heartbeatInterval = setTimeout(tick, interval);
+    heartbeatInterval = setTimeout(tick, (60 / bpmRounded) * 1000);
   }
   tick();
 }
@@ -800,23 +799,23 @@ function stopHeartbeat() {
   if (heartbeatInterval) { clearTimeout(heartbeatInterval); heartbeatInterval = null; }
 }
 
-async function initAudio() {
+function ensureAudioCtx() {
+  // Always create synchronously — must be called inside a user gesture
   if (!audioCtx) {
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  }
-  if (audioCtx.state === 'suspended') {
-    await audioCtx.resume();
   }
 }
 
 function toggleAudio() {
   const btn = document.getElementById('audioBtn');
   if (!audioOn) {
-    if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+    ensureAudioCtx();
     audioOn = true;
     btn.textContent = '♪ heartbeat on';
     document.getElementById('bpmDisplay').classList.add('show');
-    startHeartbeat();
+    audioCtx.resume().then(() => {
+      setTimeout(() => { if (audioOn) startHeartbeat(); }, 80);
+    });
   } else {
     audioOn = false;
     btn.textContent = '♪ heartbeat off';
@@ -829,23 +828,22 @@ let audioStarted = false;
 function startAudioOnGesture() {
   if (audioStarted) return;
   audioStarted = true;
-  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  ensureAudioCtx();
+  audioOn = true;
   document.getElementById('audioBtn').textContent = '♪ heartbeat on';
   document.getElementById('bpmDisplay').classList.add('show');
-  audioOn = true;
   audioCtx.resume().then(() => {
-    setTimeout(() => { if (audioOn) startHeartbeat(); }, 100);
+    setTimeout(() => { if (audioOn) startHeartbeat(); }, 80);
   });
   document.removeEventListener('touchend', startAudioOnGesture);
   window.removeEventListener('scroll', startAudioOnGesture);
 }
+
 window.addEventListener('scroll', startAudioOnGesture, { passive: true });
 document.addEventListener('touchend', startAudioOnGesture, { passive: true });
 
 window.addEventListener('scroll', () => {
-  if (!audioOn) {
-    document.getElementById('bpmVal').textContent = getTargetBPM();
-  }
+  if (!audioOn) document.getElementById('bpmVal').textContent = getTargetBPM();
 }, { passive: true });
 
 window.addEventListener('scroll', () => {
