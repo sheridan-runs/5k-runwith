@@ -12,7 +12,7 @@
     --orange: #f26419;
     --amber: #f7b731;
     --white: #f0ece4;
-    --muted: #666;
+    --muted: #999;
     --grey: #2a2a2a;
   }
 
@@ -78,7 +78,7 @@
   .hero-kicker { font-size:10px;letter-spacing:0.4em;text-transform:uppercase;color:var(--red);margin-bottom:1.8rem;opacity:0;animation:fadeUp 0.9s ease 0.3s forwards; }
   .hero-title { font-size:clamp(5rem,15vw,14rem);font-weight:900;line-height:0.85;letter-spacing:-0.03em;text-transform:uppercase;opacity:0;animation:fadeUp 0.9s ease 0.5s forwards; }
   .hero-title .pb { color:var(--red);font-style:italic;display:block; }
-  .hero-sub { font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(0.95rem,1.6vw,1.25rem);color:rgba(240,236,228,0.5);margin-top:2rem;max-width:460px;line-height:1.65;opacity:0;animation:fadeUp 0.9s ease 0.8s forwards; }
+  .hero-sub { font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(0.95rem,1.6vw,1.25rem);color:rgba(240,236,228,0.75);margin-top:2rem;max-width:460px;line-height:1.65;opacity:0;animation:fadeUp 0.9s ease 0.8s forwards; }
 
   .hero-data {
     position:absolute;right:8vw;top:50%;transform:translateY(-50%);
@@ -96,7 +96,7 @@
 
   /* ─── SECTIONS ─── */
   .section {
-    min-height:100vh;padding:10vh 8vw;position:relative;overflow:hidden;
+    padding:8vh 8vw;position:relative;overflow:hidden;
     border-top:1px solid rgba(255,255,255,0.03);
   }
 
@@ -109,8 +109,8 @@
 
   .km-title { font-size:clamp(2.8rem,5.5vw,5rem);font-weight:900;text-transform:uppercase;line-height:0.88;letter-spacing:-0.02em;margin-bottom:1.5rem; }
 
-  .km-prose { font-family:'Playfair Display',serif;font-size:clamp(1rem,1.35vw,1.12rem);line-height:1.8;color:rgba(240,236,228,0.7);font-style:italic; }
-  .km-prose em { color:var(--white);font-style:normal; }
+  .km-prose { font-family:'Playfair Display',serif;font-size:clamp(1rem,1.35vw,1.12rem);line-height:1.8;color:rgba(240,236,228,0.92);font-style:italic; }
+  .km-prose em { color:var(--white);font-style:normal;font-weight:600; }
   .km-prose strong { color:var(--amber);font-style:normal; }
 
   .split-row { display:flex;gap:2.5rem;margin-top:2.5rem; }
@@ -145,28 +145,14 @@
 
   .lydia-kicker { font-size:10px;letter-spacing:0.4em;text-transform:uppercase;color:var(--amber);margin-bottom:2rem;position:relative; }
   .lydia-title { font-size:clamp(2.5rem,6vw,6.5rem);font-weight:900;text-transform:uppercase;line-height:0.88;letter-spacing:-0.02em;max-width:900px;margin-bottom:3rem;position:relative; }
-  .lydia-title .ghost-line { color:rgba(247,183,49,0.3);display:block; }
+  .lydia-title .ghost-line { color:rgba(247,183,49,0.55);display:block; }
   .lydia-title .you-line { color:var(--white);display:block; }
 
-  /* Dual pace tracks */
-  .dual-tracks { max-width:680px;margin:2.5rem 0;position:relative; }
-  .track { display:flex;align-items:center;gap:1.5rem;margin-bottom:1.8rem; }
-  .t-name { font-size:10px;letter-spacing:0.3em;text-transform:uppercase;width:70px;flex-shrink:0; }
-  .t-name.ghost { color:var(--amber);opacity:0.55; }
-  .t-name.you { color:var(--white); }
-  .t-bar { flex:1;height:2px;background:rgba(255,255,255,0.06);position:relative;border-radius:2px;overflow:hidden; }
-  .t-fill { height:100%;border-radius:2px; }
-  .t-fill.ghost-fill { background:var(--amber);opacity:0.45;animation:gpulse 2.8s ease-in-out infinite; }
-  .t-fill.you-fill { background:var(--white);animation:ypulse 2s ease-in-out infinite; }
-  @keyframes gpulse { 0%,100%{opacity:0.35} 50%{opacity:0.65} }
-  @keyframes ypulse { 0%,100%{opacity:0.75} 50%{opacity:1} }
-  .t-pace { font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;width:75px;flex-shrink:0; }
-  .t-pace.ghost { color:var(--amber);opacity:0.55; }
-  .t-pace.you { color:var(--white); }
 
-  .lydia-prose { font-family:'Playfair Display',serif;font-size:clamp(1.05rem,1.5vw,1.2rem);line-height:1.85;color:rgba(240,236,228,0.65);max-width:620px;font-style:italic;position:relative; }
-  .lydia-prose strong { color:var(--amber);font-style:normal; }
-  .lydia-prose em { color:var(--white);font-style:normal; }
+
+  .lydia-prose { font-family:'Playfair Display',serif;font-size:clamp(1.05rem,1.5vw,1.2rem);line-height:1.85;color:rgba(240,236,228,0.92);max-width:620px;font-style:italic;position:relative; }
+  .lydia-prose strong { color:var(--amber);font-style:normal;font-weight:600; }
+  .lydia-prose em { color:var(--white);font-style:normal;font-weight:600; }
 
   /* ─── KM 5 ─── */
   .km5-section { background:#0e0905; }
@@ -179,13 +165,13 @@
     align-items:center;text-align:center;padding:8vh 8vw;
     position:relative;overflow:hidden;background:#0d0808;
   }
-  .finish-bg { position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 50% 50%, rgba(232,52,26,0.1) 0%, transparent 65%);animation:finishBreathe 3s ease-in-out infinite; }
-  @keyframes finishBreathe { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.12);opacity:0.55} }
+  .finish-bg { position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 50% 50%, rgba(232,52,26,0.15) 0%, transparent 65%);animation:finishBreathe 3s ease-in-out infinite; }
+  @keyframes finishBreathe { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.12);opacity:0.75} }
 
   .finish-label { font-size:10px;letter-spacing:0.5em;text-transform:uppercase;color:var(--red);margin-bottom:1rem;position:relative; }
-  .finish-time { font-size:clamp(5rem,18vw,17rem);font-weight:900;line-height:0.82;letter-spacing:-0.04em;color:var(--red);position:relative;text-shadow:0 0 80px rgba(232,52,26,0.25);animation:tpulse 2.5s ease-in-out infinite; }
-  @keyframes tpulse { 0%,100%{text-shadow:0 0 80px rgba(232,52,26,0.25)} 50%{text-shadow:0 0 140px rgba(232,52,26,0.5)} }
-  .finish-quote { font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.1rem,2.2vw,1.9rem);color:rgba(240,236,228,0.5);margin-top:2rem;position:relative;max-width:640px; }
+  .finish-time { font-size:clamp(5rem,18vw,17rem);font-weight:900;line-height:0.82;letter-spacing:-0.04em;color:var(--red);position:relative;text-shadow:0 0 60px rgba(232,52,26,0.6);animation:tpulse 2.5s ease-in-out infinite; }
+  @keyframes tpulse { 0%,100%{text-shadow:0 0 60px rgba(232,52,26,0.6);opacity:1} 50%{text-shadow:0 0 120px rgba(232,52,26,0.9);opacity:1} }
+  .finish-quote { font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.1rem,2.2vw,1.9rem);color:rgba(240,236,228,0.8);margin-top:2rem;position:relative;max-width:640px; }
   .finish-divider { width:1px;height:70px;background:linear-gradient(to bottom,transparent,var(--red),transparent);margin:2.5rem auto;position:relative; }
   .finish-grid { display:flex;gap:5rem;flex-wrap:wrap;justify-content:center;position:relative; }
   .fstat { text-align:center; }
@@ -369,34 +355,19 @@
 <!-- ════════════ LYDIA ════════════ -->
 <section class="section lydia-section">
   <div class="lydia-bg"></div>
-  <div class="lydia-kicker r">Kilometre 04 · The memory that drove the final push</div>
+  <div class="lydia-kicker r">Kilometre 04 · The image that carried you home</div>
   <h2 class="lydia-title r d1">
     <span class="ghost-line">She said she had nothing left.</span>
     <span class="you-line">Then she found it anyway.</span>
   </h2>
 
-  <div class="dual-tracks r d2">
-    <div style="font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem;">Last week's parkrun — pacing Lydia</div>
-    <div class="track">
-      <div class="t-name ghost">Lydia</div>
-      <div class="t-bar"><div class="t-fill ghost-fill" style="width:78%;"></div></div>
-      <div class="t-pace ghost">~4:45</div>
-    </div>
-    <div class="track">
-      <div class="t-name you">Sheridan</div>
-      <div class="t-bar"><div class="t-fill you-fill" style="width:88%;"></div></div>
-      <div class="t-pace you">3:47</div>
-    </div>
-  </div>
-
-  <p class="lydia-prose r d3">
-    You went out way too fast with Lydia — but sometimes that's what you have to do to get clear of the pack at the start. You trusted her to settle. <em>You were talking the whole time: "We're on pace. No need to push right now."</em> Running from the middle of the field. People coming past. You making moves, reading the race for both of you.<br><br>
-    At 4km you told her you were going to do a little squeeze — <em>just a slight pick-up.</em> She was breathing hard, moving well, locked in. You got to the final bend and said you were letting her go. <strong>"I don't have anything else."</strong><br><br>
-    Then she dug deeper than she thought she could. <em>200 metres. Picked it up. Finished strong.</em><br><br>
-    A week later, at 4km into your own race, you were carrying that image. You used it. <strong>You found exactly what she found.</strong>
+  <p class="lydia-prose r d2">
+    A week earlier you'd paced Lydia through her own parkrun. You went out fast — sometimes you have to, to clear the pack at the start. You trusted her to settle. <em>"We're on pace. No need to push right now."</em> Running from the middle of the field for once, making moves, reading the race for both of you.<br><br>
+    At 4km: a little squeeze coming. Just a slight pick-up. She was breathing hard, moving well, locked in. You got to the final bend and said you were letting her go. <strong>"I don't have anything else."</strong> Then you watched her dig — pick it up one last time, carry herself through the final 200 metres on pure will.<br><br>
+    A week later, at 4km into your own race, that image surfaced. <em>You used it.</em> <strong>You found exactly what she found.</strong>
   </p>
 
-  <div class="split-row r d4" style="margin-top:2.5rem;">
+  <div class="split-row r d3" style="margin-top:2.5rem;">
     <div class="split"><div class="split-val" style="color:var(--amber);">3:47</div><div class="split-lbl">km 4 split</div></div>
     <div class="split"><div class="split-val" style="color:var(--red);">185</div><div class="split-lbl">bpm</div></div>
     <div class="split"><div class="split-val" style="color:var(--muted);">95%</div><div class="split-lbl">max hr</div></div>
@@ -561,7 +532,7 @@ document.querySelectorAll('.r').forEach(el => observer.observe(el));
     const lngs = GPS.map(p => p.lng);
     const minLat = Math.min(...lats), maxLat = Math.max(...lats);
     const minLng = Math.min(...lngs), maxLng = Math.max(...lngs);
-    const pad = 40;
+    const pad = 70; // increased to prevent label clipping
 
     const scaleX = (lng) => pad + ((lng - minLng) / (maxLng - minLng)) * (W - pad * 2);
     const scaleY = (lat) => pad + ((lat - minLat) / (maxLat - minLat)) * (H - pad * 2);
@@ -579,14 +550,14 @@ document.querySelectorAll('.r').forEach(el => observer.observe(el));
       ctx.beginPath();
       ctx.moveTo(scaleX(p1.lng), H - scaleY(p1.lat));
       ctx.lineTo(scaleX(p2.lng), H - scaleY(p2.lat));
-      ctx.strokeStyle = `rgba(${r},${g},${b},0.9)`;
-      ctx.lineWidth = 3;
+      ctx.strokeStyle = `rgba(${r},${g},${b},1)`;
+      ctx.lineWidth = 3.5;
       ctx.lineCap = 'round';
       ctx.stroke();
     }
 
     // Glow pass
-    ctx.globalAlpha = 0.3;
+    ctx.globalAlpha = 0.4;
     for (let i = 1; i < GPS.length; i++) {
       const p1 = GPS[i - 1], p2 = GPS[i];
       const pct = (p1.hr - 135) / 60;
@@ -594,7 +565,7 @@ document.querySelectorAll('.r').forEach(el => observer.observe(el));
       ctx.moveTo(scaleX(p1.lng), H - scaleY(p1.lat));
       ctx.lineTo(scaleX(p2.lng), H - scaleY(p2.lat));
       ctx.strokeStyle = `rgba(232,${Math.round(100 - pct*80)},26,1)`;
-      ctx.lineWidth = 7;
+      ctx.lineWidth = 9;
       ctx.stroke();
     }
     ctx.globalAlpha = 1;
@@ -706,12 +677,21 @@ function toggleAudio() {
   }
 }
 
-// Update BPM on scroll without audio
+// Auto-start heartbeat on first scroll (requires user gesture)
+let audioStarted = false;
 window.addEventListener('scroll', () => {
+  if (!audioStarted) {
+    audioStarted = true;
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    audioOn = true;
+    document.getElementById('audioBtn').textContent = '♪ heartbeat on';
+    document.getElementById('bpmDisplay').classList.add('show');
+    startHeartbeat();
+  }
   if (audioOn) return;
   const t = getTargetBPM();
   document.getElementById('bpmVal').textContent = t;
-});
+}, { passive: true });
 
 // Parallax hero
 window.addEventListener('scroll', () => {
@@ -719,5 +699,21 @@ window.addEventListener('scroll', () => {
   if (bg) bg.style.transform = `translateY(${window.scrollY * 0.25}px)`;
 });
 </script>
+<!-- ════════════ FOOTER ════════════ -->
+<footer style="background:#050505;border-top:1px solid rgba(255,255,255,0.05);padding:4vh 8vw;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem;">
+  <div>
+    <div style="font-size:9px;letter-spacing:0.4em;text-transform:uppercase;color:var(--muted);margin-bottom:0.8rem;">Running Coaching</div>
+    <a href="https://runwith.club" target="_blank" style="color:var(--red);font-size:1.4rem;font-weight:700;letter-spacing:-0.02em;text-decoration:none;text-transform:uppercase;transition:opacity 0.2s ease;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">runwith.club →</a>
+  </div>
+  <div style="text-align:center;">
+    <div style="font-size:9px;letter-spacing:0.4em;text-transform:uppercase;color:rgba(255,255,255,0.1);">Palmerston North · 27 Feb 2026</div>
+    <div style="font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.06);margin-top:0.4rem;">18:38 · Personal Best</div>
+  </div>
+  <div style="text-align:right;">
+    <div style="font-size:9px;letter-spacing:0.4em;text-transform:uppercase;color:var(--muted);margin-bottom:0.8rem;">Sheridan Jamieson</div>
+    <a href="https://sheridanjamieson.com" target="_blank" style="color:rgba(240,236,228,0.5);font-size:1.4rem;font-weight:700;letter-spacing:-0.02em;text-decoration:none;text-transform:uppercase;transition:opacity 0.2s ease;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">sheridanjamieson.com →</a>
+  </div>
+</footer>
+
 </body>
 </html>
