@@ -112,7 +112,7 @@
     border:1px solid rgba(232,52,26,0.4);
     color:var(--red);
     font-family:'Barlow Condensed',sans-serif;
-    font-size:11px;letter-spacing:0.4em;text-transform:uppercase;
+    font-size:13px;letter-spacing:0.2em;text-transform:uppercase;
     padding:0.8rem 1.6rem;
     cursor:pointer;
     backdrop-filter:blur(6px);
@@ -179,10 +179,10 @@
   .two-col { display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center; }
   .two-col.flip .col-text { order:2; }
   .two-col.flip .col-vis { order:1; }
-  .km-badge { font-size:10px;letter-spacing:0.4em;text-transform:uppercase;color:var(--red);margin-bottom:1.2rem;display:flex;align-items:center;gap:0.8rem; }
+  .km-badge { font-size:10px;letter-spacing:0.4em;text-transform:uppercase;color:var(--red);margin-bottom:1.2rem;display:flex;align-items:center;gap:0.8rem;opacity:1; }
   .km-badge::after { content:'';flex:1;height:1px;background:rgba(232,52,26,0.25);max-width:50px; }
   .km-title { font-size:clamp(2.8rem,5.5vw,5rem);font-weight:900;text-transform:uppercase;line-height:0.88;letter-spacing:-0.02em;margin-bottom:1.5rem; }
-  .km-prose { font-family:'Playfair Display',serif;font-size:clamp(1rem,1.35vw,1.12rem);line-height:1.8;color:rgba(240,236,228,0.92);font-style:italic; }
+  .km-prose { font-family:'Playfair Display',serif;font-size:clamp(1.05rem,1.35vw,1.12rem);line-height:1.8;color:rgba(240,236,228,1);font-style:italic; }
   .km-prose em { color:var(--white);font-style:normal;font-weight:600; }
   .km-prose strong { color:var(--amber);font-style:normal; }
   .split-row { display:flex;gap:2.5rem;margin-top:2.5rem; }
@@ -217,7 +217,7 @@
   .lydia-title { font-size:clamp(2.5rem,6vw,6.5rem);font-weight:900;text-transform:uppercase;line-height:0.88;letter-spacing:-0.02em;max-width:900px;margin-bottom:3rem;position:relative; }
   .lydia-title .ghost-line { color:rgba(247,183,49,0.55);display:block; }
   .lydia-title .you-line { color:var(--white);display:block; }
-  .lydia-prose { font-family:'Playfair Display',serif;font-size:clamp(1.05rem,1.5vw,1.2rem);line-height:1.85;color:rgba(240,236,228,0.92);max-width:620px;font-style:italic;position:relative; }
+  .lydia-prose { font-family:'Playfair Display',serif;font-size:clamp(1.05rem,1.5vw,1.2rem);line-height:1.85;color:rgba(240,236,228,1);max-width:620px;font-style:italic;position:relative; }
   .lydia-prose strong { color:var(--amber);font-style:normal;font-weight:600; }
   .lydia-prose em { color:var(--white);font-style:normal;font-weight:600; }
 
@@ -274,11 +274,11 @@
     .hero-title { font-size:clamp(4rem,18vw,7rem); }
     .hero-sub { font-size:1rem;margin-top:1.2rem; }
     .scroll-hint { bottom:1.5rem; }
-    .km-badge { font-size:9px;margin-bottom:0.8rem; }
+    .km-badge { font-size:11px;margin-bottom:0.8rem; }
     .km-title { font-size:clamp(2.4rem,10vw,3.8rem);margin-bottom:1rem; }
-    .km-prose { font-size:1rem;line-height:1.7; }
+    .km-prose { font-size:1.08rem;line-height:1.75; }
     .split-row { gap:1.5rem;margin-top:1.8rem;flex-wrap:wrap; }
-    .split-val { font-size:clamp(1.6rem,7vw,2.4rem); }
+    .split-val { font-size:clamp(1.8rem,7vw,2.4rem); }
     .ring-wrap { min-height:240px; }
     .ering { width:190px;height:190px; }
     .ering-pct { font-size:2.8rem; }
@@ -286,15 +286,16 @@
     .map-wrap { height:260px; }
     .lydia-title { font-size:clamp(1.9rem,7.5vw,3rem);margin-bottom:2rem;line-height:0.92; }
     .lydia-kicker { margin-bottom:1.2rem; }
-    .lydia-prose { font-size:1rem;line-height:1.75; }
+    .lydia-prose { font-size:1.08rem;line-height:1.8; }
     .finish-section { padding:6vh 6vw; }
     .finish-time { font-size:clamp(5rem,22vw,10rem); }
     .finish-quote { font-size:1.05rem;margin-top:1.2rem; }
     .finish-grid { gap:2rem;margin-top:0; }
     .fstat-val { font-size:clamp(2rem,8vw,3rem); }
     #hrWaveSvg { height:80px; }
-    #audioBtn { bottom:1.5rem;right:auto;left:1.2rem;font-size:9px;padding:0.6rem 1rem; }
+    #audioBtn { bottom:1.5rem;right:auto;left:1.2rem;font-size:12px;letter-spacing:0.15em;padding:0.65rem 1.1rem; }
     #bpmDisplay { bottom:5rem;left:auto;right:1.2rem;text-align:right; }
+    #bpmVal { font-size:3.2rem; }
     footer { flex-direction:column !important;align-items:flex-start !important;gap:1.5rem !important;padding:4vh 6vw 7rem !important; }
     .footer-col,.footer-col-center,.footer-col-right { text-align:left; }
     .footer-link { font-size:1.15rem; }
